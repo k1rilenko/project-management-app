@@ -1,0 +1,14 @@
+.welcome-page {
+  display: flex;
+  flex-direction: column;
+
+  &__auth {
+    display: flex;
+    margin-left: auto;
+  }
+
+  &__message {
+    color: lightgray;
+  }
+}
+
