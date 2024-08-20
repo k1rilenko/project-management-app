@@ -1,1 +1,18 @@
 <p>sign-up works!</p>
+<form [formGroup]="signUpForm" (ngSubmit)="onSubmit()">
+  <label for="login">Login</label>
+  <input id="login" type="text" [formControl]="signUpForm.controls.login">
+
+  <ng-container *ngIf="shownNameFormField">
+    <label for="name">Name</label>
+    <input id="name" type="text" formControlName="name">
+  </ng-container>
+
+  <label for="password">Password</label>
+  <input id="password" type="text" formControlName="password">
+
+  <button type="button" (click)="toggleNameInput()">Toggle name input</button>
+  <button type="submit" [disabled]="!signUpForm.valid">Send</button>
+</form>
+
+

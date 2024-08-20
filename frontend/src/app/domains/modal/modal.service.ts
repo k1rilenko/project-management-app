@@ -13,6 +13,6 @@ export class ModalService {
   }
 
   public close() {
-    this.router.navigate([{ outlets: { modal: null } }]);
+    return this.router.navigate([{ outlets: { modal: null } }]);
   }
 }

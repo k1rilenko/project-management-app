@@ -1,13 +1,26 @@
+:host {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 .welcome-page {
   display: flex;
   flex-direction: column;
+  height: 100%;
 
   &__auth {
     display: flex;
     margin-left: auto;
   }
 
-  &__message {
+  &__text {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 48px;
+    font-weight: 700;
+    margin: auto 0;
     color: lightgray;
   }
 }

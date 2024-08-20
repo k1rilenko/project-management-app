@@ -1,0 +1,17 @@
+HERE I SHOWN ALL FORMS
+<div class="boards">
+  @if (loading$ | async) {
+    <p> Loading....</p>
+  }
+
+  @if (boards$ | async; as boards) {
+    <div class="boards__wrapper">
+      @for (board of boards; track board.id) {
+        <app-board-preview class="boards__item" [board]="board"></app-board-preview>
+      } @empty {
+        <p>There are no items.</p>
+      }
+    </div>
+  }
+</div>
+

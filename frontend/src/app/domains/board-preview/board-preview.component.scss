@@ -1,0 +1,14 @@
+:host {
+  min-width: 300px;
+  width: max-content;
+  display: flex;
+}
+
+.board {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  border-radius: 40px;
+  border: 1px solid lightgray;
+  padding: 16px;
+}

@@ -1,0 +1,13 @@
+.header {
+  display: flex;
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    margin-left: auto;
+    gap: 10px;
+  }
+
+  &__button {
+  }
+}
