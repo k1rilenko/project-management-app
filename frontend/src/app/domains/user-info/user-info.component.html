@@ -1,0 +1,8 @@
+@if (user$ | async; as user) {
+  <div class="user">
+    <p class="user__text text">
+      <span class="text__label">user: {{ user.name }}</span>
+      <span class="text__value"></span>
+    </p>
+  </div>
+}

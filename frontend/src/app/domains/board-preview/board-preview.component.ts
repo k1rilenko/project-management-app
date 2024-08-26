@@ -19,9 +19,16 @@ export class BoardPreviewComponent {
 
   constructor(private router: Router) {}
 
-  deleteBoard() {
+  deleteBoard(event: Event) {
+    event.stopPropagation();
     this.router.navigate([
       { outlets: { modal: [ModalPathEnum.CONFIRMATION_DIALOG, ConfirmationDialogName.DELETE_BOARD, this.board?.id] } },
     ]);
+  }
+
+  openBoard() {
+    if (this.board) {
+      this.router.navigate(['main', 'board', this.board.id]);
+    }
   }
 }

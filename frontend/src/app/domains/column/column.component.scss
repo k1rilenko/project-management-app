@@ -1,0 +1,30 @@
+:host {
+  border: 1px solid lightgray;
+  border-radius: var(--border-radius);
+  padding: 16px;
+}
+
+.title {
+  display: flex;
+  width: 100%;
+  margin-bottom: 10px;
+
+  &.show-controls {
+    .title__controls {
+      max-width: 60px;
+    }
+  }
+
+  &__controls {
+    max-width: 0;
+    transition: .3s;
+  }
+
+  &__control {
+  }
+
+  &__input {
+    width: 100%;
+  }
+
+}

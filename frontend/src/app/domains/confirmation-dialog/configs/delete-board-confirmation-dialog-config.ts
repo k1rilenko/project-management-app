@@ -1,20 +1,18 @@
 import { AbstractConfirmationDialogConfig } from './abstract-confirmation-dialog-config';
 import { inject, Injectable } from '@angular/core';
-import { ApiService } from '../../../services/api/api.service';
-import { deleteBoardRequest } from '../../../services/api/requests/delete-board.request';
-import { ModalService } from '../../modal/modal.service';
 import { ActivatedRoute } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { boardsActions } from '../../../store/boards/boards.actions';
 
 @Injectable()
 export class DeleteBoardConfirmationDialogConfig extends AbstractConfirmationDialogConfig {
   message = 'Delete Board Confirmation Dialog';
-  private apiService = inject(ApiService);
-  private modalService = inject(ModalService);
+  private store = inject(Store);
   private deleteID = inject(ActivatedRoute).snapshot.paramMap.get('id');
 
   onConfirm() {
     if (this.deleteID) {
-      this.apiService.send(deleteBoardRequest(this.deleteID)).subscribe({ next: () => this.modalService.close() });
+      this.store.dispatch(boardsActions.deleteBoard({ boardId: this.deleteID }));
     }
   }
 

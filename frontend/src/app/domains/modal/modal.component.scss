@@ -24,5 +24,14 @@
     width: 50vw;
     height: 50vh;
     border: 1px solid white;
+
+    //  TODO REMOVE HERE
+    &::ng-deep {
+      form {
+        display: flex;
+        flex-direction: column;
+        padding: 16px;
+      }
+    }
   }
 }

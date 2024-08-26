@@ -1,0 +1,15 @@
+<div class="column">
+  <div class="column__title title" [class.show-controls]="isFocus">
+    <div class="title__controls">
+      <app-button class="title__control title__control_cancel">cancel</app-button>
+      <app-button class="title__control title__control_submit" (click)="renameColumnTitle()">submit</app-button>
+    </div>
+    <input class="title__input" type="text" [formControl]="columnTitle" (focus)="changeFocusStatus(true)"
+           (blur)="changeFocusStatus(false)">
+  </div>
+  <div class="column__wrapper">
+    @for (task of tasks$ | async; track task.id) {
+      <app-task-preview [taskId]="task.id"></app-task-preview>
+    }
+  </div>
+</div>

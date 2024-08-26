@@ -10,6 +10,11 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { boardsReducer } from './store/boards/boards.reducer';
 import { BoardsEffects } from './store/boards/boards.effects';
 import { provideBoardStore } from './store/boards/boards.provider';
+import { provideColumnsStore } from './store/columns/columns.provider';
+import { provideRouterStore, routerReducer } from '@ngrx/router-store';
+import { CustomSerializer } from './store/router/custom-serializer';
+import { provideUsersStore } from './store/users/users.provider';
+import { provideTasksStore } from './store/tasks/tasks.provider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -17,8 +22,12 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes),
     provideClientHydration(),
     provideHttpClient(),
-    provideStore(),
+    provideStore({ router: routerReducer }),
     provideBoardStore(),
+    provideColumnsStore(),
+    provideUsersStore(),
+    provideTasksStore(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
+    provideRouterStore({ serializer: CustomSerializer }),
   ],
 };

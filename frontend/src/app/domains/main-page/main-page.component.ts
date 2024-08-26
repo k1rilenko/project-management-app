@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { provideRouter, RouterModule, RouterOutlet, Routes } from '@angular/router';
 import { HeaderComponent } from '../header/header.component';
+import { Store } from '@ngrx/store';
+import { usersActions } from '../../store/users/users.actions';
 
 const routes: Routes = [];
 
@@ -12,4 +14,10 @@ const routes: Routes = [];
   styleUrl: './main-page.component.scss',
   providers: [],
 })
-export class MainPageComponent {}
+export class MainPageComponent implements OnInit {
+  private store = inject(Store);
+
+  ngOnInit(): void {
+    this.store.dispatch(usersActions.getUsers());
+  }
+}

@@ -1,0 +1,22 @@
+@if (board$ && board$ | async; as board) {
+  <section class="board">
+    <h1 class="board__title"> {{ board.title }}</h1>
+    <div class="board__controls">
+      <app-button (click)="createBoard()"> Add column</app-button>
+    </div>
+    @if (columns$ | async; as columns) {
+      <app-button (click)="createTask()"> Add task</app-button>
+      <h1> Columns:</h1>
+      <div class="board__columns">
+        @for (column of columns; track column.id) {
+          <app-column class="board__column" [column]="column">
+          </app-column>
+        } @empty {
+          Columns empty!!!
+        }
+      </div>
+    }
+  </section>
+
+}
+

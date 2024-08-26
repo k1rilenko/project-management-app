@@ -1,7 +1,5 @@
-import { ApiRequest } from '../models/api-request';
-import { SignInDto } from '../dto/sign-in.dto';
-import { BoardDto } from '../dto/board.dto';
-import { getBoardRequest } from './get-board.request';
+import { ApiRequest } from '../../models/api-request';
+import { BoardDto } from '../../dto/board.dto';
 
 export interface CreateBoardRequestBody {
   title: string;

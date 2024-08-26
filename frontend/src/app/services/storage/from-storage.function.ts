@@ -13,7 +13,6 @@ export const fromStorage = <TValue>(storageKey: string): WritableSignal<TValue |
     untracked(() => storage.setItem(storageKey, updated));
   });
   const storageEventListener = (event: StorageEvent) => {
-    console.log(event);
     const isWatchedValueTargeted = event.key === storageKey;
     if (!isWatchedValueTargeted) {
       return;

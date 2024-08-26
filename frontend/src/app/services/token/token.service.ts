@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, WritableSignal } from '@angular/core';
 import { Token, Token_Storage_Key } from './token.model';
 import { fromStorage } from '../storage/from-storage.function';
 
@@ -12,6 +12,10 @@ export class TokenService {
 
   public getToken(): Token {
     return this.token();
+  }
+
+  public getTokenSignal(): WritableSignal<Token> {
+    return this.token;
   }
 
   public setToken(token: Token): void {

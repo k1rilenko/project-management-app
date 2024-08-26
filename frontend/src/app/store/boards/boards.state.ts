@@ -1,5 +1,6 @@
 import { createEntityAdapter, EntityState } from '@ngrx/entity';
 import { BoardEntity } from './models/board.entity';
+import { ColumnEntity } from '../columns/models/column.entity';
 
 export interface BoardsCommonStateInterface {
   loading: boolean;

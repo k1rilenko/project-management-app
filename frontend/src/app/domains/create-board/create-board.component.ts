@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ApiService } from '../../services/api/api.service';
-import { createBoardRequest } from '../../services/api/requests/create-board.request';
+import { Store } from '@ngrx/store';
+import { boardsActions } from '../../store/boards/boards.actions';
 
 @Component({
   selector: 'app-create-board',
@@ -16,14 +17,14 @@ export class CreateBoardComponent {
   constructor(
     private formBuilder: NonNullableFormBuilder,
     private apiService: ApiService,
+    private store: Store,
   ) {
     this.form = this.getForm();
   }
 
   public submit() {
     const formValue = this.form.getRawValue();
-    //NEED MOVE LOGIC IN EFFECT!
-    this.apiService.send(createBoardRequest(formValue)).subscribe(v => console.log(v));
+    this.store.dispatch(boardsActions.createBoard({ board: formValue }));
   }
 
   private getForm() {

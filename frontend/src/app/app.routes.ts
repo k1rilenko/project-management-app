@@ -47,6 +47,24 @@ export const routes: Routes = [
     ],
   }),
   createModalRoute({
+    path: ModalPathEnum.CREATE_COLUMN,
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./domains/create-column/create-column.component').then(c => c.CreateColumnComponent),
+      },
+    ],
+  }),
+  createModalRoute({
+    path: ModalPathEnum.CREATE_TASK,
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./domains/create-task/create-task.component').then(c => c.CreateTaskComponent),
+      },
+    ],
+  }),
+  createModalRoute({
     path: ModalPathEnum.CONFIRMATION_DIALOG,
     children: [
       {

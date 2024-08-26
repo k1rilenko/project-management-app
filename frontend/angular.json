@@ -106,6 +106,10 @@
     }
   },
   "cli": {
+    "schematicCollections": [
+      "@schematics/angular",
+      "@ngrx/schematics"
+    ],
     "analytics": false
   }
 }
