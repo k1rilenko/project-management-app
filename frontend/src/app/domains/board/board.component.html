@@ -7,9 +7,10 @@
     @if (columns$ | async; as columns) {
       <app-button (click)="createTask()"> Add task</app-button>
       <h1> Columns:</h1>
-      <div class="board__columns">
+      <div class="board__columns" cdkDropList cdkDropListOrientation="horizontal"
+           (cdkDropListDropped)="drop($event)">
         @for (column of columns; track column.id) {
-          <app-column class="board__column" [column]="column">
+          <app-column class="board__column" [column]="column" cdkDrag [cdkDragData]="column">
           </app-column>
         } @empty {
           Columns empty!!!

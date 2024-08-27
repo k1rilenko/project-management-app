@@ -18,12 +18,24 @@ export const columnsActions = {
   createColumnSuccess: createAction('[Columns] Create Column Success', props<{ columnEntity: ColumnEntity }>()),
   createColumnFailed: createAction('[Columns] Create Column Failed'),
 
-  updateColumn: createAction('[Columns] Update Column', props<{
-    columnId: ColumnEntity['id'],
-    data: Partial<UpdateColumnRequestBody>
-  }>()),
+  updateColumn: createAction(
+    '[Columns] Update Column',
+    props<{
+      columnId: ColumnEntity['id'];
+      data: Partial<UpdateColumnRequestBody>;
+    }>(),
+  ),
   updateColumnSuccess: createAction('[Columns] Update ColumnSuccess', props<{ columnEntity: ColumnEntity }>()),
   updateColumnFailed: createAction('[Columns] Update ColumnFailed'),
+
+  dragColumn: createAction(
+    '[Columns] Drag Column',
+    props<{
+      columnId: ColumnEntity['id'];
+      prevIndex: number;
+      currentIndex: number;
+    }>(),
+  ),
 
   startLoading: createAction('[Columns] Starting Loading'),
   stopLoading: createAction('[Columns] Stop Loading'),

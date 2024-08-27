@@ -1,6 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 import { adapter, DEFAULT_COLUMNS_STATE } from './columns.state';
 import { columnsActions } from './columns.actions';
+import { moveItemInArray } from '@angular/cdk/drag-drop';
+import { isNotUndefined } from '../../utils/is-not-undefined';
 
 const actions = columnsActions;
 
@@ -17,4 +19,12 @@ export const columnsReducer = createReducer(
       _state,
     ),
   ),
+  on(actions.dragColumn, (_state, { currentIndex, prevIndex }) => {
+    const entities = _state.ids.map(id => _state.entities[id]).filter(isNotUndefined);
+    moveItemInArray(entities, prevIndex, currentIndex);
+    return adapter.setAll(
+      entities.map((entity, index) => ({ ...entity, order: index + 1 })),
+      _state,
+    );
+  }),
 );

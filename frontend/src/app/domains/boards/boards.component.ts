@@ -1,5 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { boardsActions } from '../../store/boards/boards.actions';
 import { Observable } from 'rxjs';
@@ -14,6 +13,7 @@ import { BoardPreviewComponent } from '../board-preview/board-preview.component'
   imports: [CommonModule, BoardPreviewComponent],
   templateUrl: './boards.component.html',
   styleUrl: './boards.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class BoardsComponent implements OnInit {
   public boards$: Observable<BoardEntity[]>;

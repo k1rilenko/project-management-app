@@ -16,6 +16,7 @@ import {
   UpdateColumnRequestBody,
   UpdateColumnRequestParams,
 } from '../../services/api/requests/column/update-column.request';
+import { ColumnEntity } from './models/column.entity';
 
 @Injectable()
 export class ColumnsEffects {
@@ -87,6 +88,19 @@ export class ColumnsEffects {
               }),
             );
           }),
+        ),
+      ),
+    ),
+  );
+
+  dragColumn$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(columnsActions.dragColumn),
+      switchMap(({ columnId }) =>
+        this.store.select(columnsSelectors.columnById(columnId)).pipe(
+          filter(isNotUndefined),
+          take(1),
+          map(({ order, id }) => columnsActions.updateColumn({ columnId: id, data: { order } })),
         ),
       ),
     ),
