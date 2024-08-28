@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 
 @Component({
@@ -9,6 +9,11 @@ import { Router, RouterOutlet } from '@angular/router';
   styleUrl: './modal.component.scss',
 })
 export class ModalComponent {
+  @HostListener('document:keydown.escape', ['$event'])
+  handleEscape() {
+    this.closeModal();
+  }
+
   constructor(private router: Router) {}
 
   public closeModal(): void {

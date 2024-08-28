@@ -7,10 +7,13 @@
     <input class="title__input" type="text" [formControl]="columnTitle" (focus)="changeFocusStatus(true)"
            (blur)="changeFocusStatus(false)">
   </div>
-  @if (tasks$ | async) {
-    <div class="column__wrapper" cdkDropList [id]="column.id" [cdkDropListData]="tasks$ | async"
+  @if (tasks$ | async; as tasks) {
+    <div class="column__wrapper"
+         cdkDropList
+         [id]="column.id"
+         [cdkDropListData]="tasks"
          (cdkDropListDropped)="drop($event)">
-      @for (task of tasks$ | async; track task.id) {
+      @for (task of tasks; track task.id) {
         <app-task-preview [taskId]="task.id" cdkDrag [cdkDragData]="task"></app-task-preview>
       }
     </div>

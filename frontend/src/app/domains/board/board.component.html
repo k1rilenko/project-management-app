@@ -12,6 +12,7 @@
         cdkDropList
         cdkDropListGroup
         cdkDropListOrientation="horizontal"
+        cdkDropListLockAxis="x"
         (cdkDropListDropped)="drop($event)">
         @for (column of columns; track column.id) {
           <app-column class="board__column" [column]="column" cdkDrag [cdkDragData]="column">

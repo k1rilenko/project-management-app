@@ -10,6 +10,7 @@ import { FormBuilder, FormControl, NonNullableFormBuilder, ReactiveFormsModule, 
 import { ButtonComponent } from '../../shared/button/button.component';
 import { columnsActions } from '../../store/columns/columns.actions';
 import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
+import { tasksActions } from '../../store/tasks/tasks.actions';
 
 @Component({
   selector: 'app-column',
@@ -51,7 +52,19 @@ export class ColumnComponent implements OnInit {
     this.isFocus = status;
   }
 
-  drop(event: CdkDragDrop<any, any, TaskEntity>) {
-    console.log(event);
+  drop(event: CdkDragDrop<TaskEntity[], TaskEntity[], TaskEntity>) {
+    const { container, previousContainer, previousIndex, currentIndex, item } = event;
+    const taskId = item.data.id;
+    if (container.id !== previousContainer.id || previousIndex !== currentIndex) {
+      this.store.dispatch(
+        tasksActions.dragTask({
+          currentColumnId: container.id,
+          prevColumnId: previousContainer.id,
+          currentIndex,
+          prevIndex: previousIndex,
+          taskId,
+        }),
+      );
+    }
   }
 }
