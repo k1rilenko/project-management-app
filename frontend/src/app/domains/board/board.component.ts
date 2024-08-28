@@ -14,12 +14,12 @@ import { columnsSelectors } from '../../store/columns/columns.selectors';
 import { ColumnComponent } from '../column/column.component';
 import { columnsActions } from '../../store/columns/columns.actions';
 import { boardsActions } from '../../store/boards/boards.actions';
-import { CdkDrag, CdkDragDrop, CdkDragSortEvent, CdkDropList, moveItemInArray } from '@angular/cdk/drag-drop';
+import { CdkDrag, CdkDragDrop, CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [AsyncPipe, ButtonComponent, ColumnComponent, CdkDropList, CdkDrag],
+  imports: [AsyncPipe, ButtonComponent, ColumnComponent, CdkDropList, CdkDrag, CdkDropListGroup],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss',
 })
@@ -50,25 +50,6 @@ export class BoardComponent implements OnInit {
   createTask() {
     this.modalService.open(ModalPathEnum.CREATE_TASK);
   }
-
-  // drop(event: CdkDragDrop<ColumnEntity[], ColumnEntity[], ColumnEntity>) {
-  //   const { currentIndex, previousIndex } = event;
-  //   const draggedItem: ColumnEntity = event.item.data; // Получаем данные перетаскиваемого элемента
-  //   // console.log('previous index:', previousIndex, 'currentIndex', currentIndex);
-  //   console.log('Dragged Item:', draggedItem);
-  //   console.log('event:', event);
-  // }
-
-  // drop1() {
-  //   if (prevColumn.id !== currentColumn.id) {
-  //     console.log('prev:', prevColumn);
-  //     console.log(currentColumn);
-  //
-  //     const id = prevColumn.id;
-  //     const order = currentColumn.order;
-  //     this.store.dispatch(columnsActions.dragColumn({ columnId: id, nextOrder: order }));
-  //   }
-  // }
 
   drop(event: CdkDragDrop<ColumnEntity[], ColumnEntity[], ColumnEntity>) {
     const { previousIndex, currentIndex } = event;

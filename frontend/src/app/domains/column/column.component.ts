@@ -9,11 +9,12 @@ import { TaskPreviewComponent } from '../task-preview/task-preview.component';
 import { FormBuilder, FormControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { columnsActions } from '../../store/columns/columns.actions';
+import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-column',
   standalone: true,
-  imports: [AsyncPipe, JsonPipe, TaskPreviewComponent, ButtonComponent, ReactiveFormsModule],
+  imports: [AsyncPipe, JsonPipe, TaskPreviewComponent, ButtonComponent, ReactiveFormsModule, CdkDropList, CdkDrag],
   templateUrl: './column.component.html',
   styleUrl: './column.component.scss',
 })
@@ -48,5 +49,9 @@ export class ColumnComponent implements OnInit {
 
   changeFocusStatus(status: boolean) {
     this.isFocus = status;
+  }
+
+  drop(event: CdkDragDrop<any, any, TaskEntity>) {
+    console.log(event);
   }
 }
