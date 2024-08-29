@@ -1,0 +1,14 @@
+<ng-content select="app-form-field-label"></ng-content>
+<div class="form-field" [class.error]="errorMessage$ | async" [class.disabled]="disabled$ | async"
+     [class.valid]="valid$ | async">
+
+  <ng-content select="input"></ng-content>
+  <ng-content select="textarea"></ng-content>
+  <ng-content select="select"></ng-content>
+
+  @if (errorMessage$ | async; as errorMessage) {
+    <p class="form-field__error error-message">
+      <span class="error-message__text"> {{ errorMessage }}</span>
+    </p>
+  }
+</div>

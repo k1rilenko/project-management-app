@@ -8,6 +8,8 @@ import { AsyncPipe } from '@angular/common';
 import { ColumnEntity } from '../../store/columns/models/column.entity';
 import { columnsSelectors } from '../../store/columns/columns.selectors';
 import { CreateTaskActionParam, tasksActions } from '../../store/tasks/tasks.actions';
+import { FormFieldLabelComponent } from '../form/form-field-label/form-field-label.component';
+import { FormFieldComponent } from '../form/form-field/form-field.component';
 
 export interface UserSelectOptionsInterface {
   text: UserEntity['name'];
@@ -22,7 +24,7 @@ export interface ColumnSelectOptionsInterface {
 @Component({
   selector: 'app-create-task',
   standalone: true,
-  imports: [ReactiveFormsModule, AsyncPipe],
+  imports: [ReactiveFormsModule, AsyncPipe, FormFieldLabelComponent, FormFieldComponent],
   templateUrl: './create-task.component.html',
   styleUrl: './create-task.component.scss',
 })
@@ -58,7 +60,7 @@ export class CreateTaskComponent {
   private getForm() {
     return this.formBuilder.group({
       title: ['', [Validators.required]],
-      description: ['', [Validators.required]],
+      description: ['', [Validators.required, Validators.minLength(10)]],
       user: ['', [Validators.required]],
       column: ['', [Validators.required]],
     });

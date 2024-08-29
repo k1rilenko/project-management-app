@@ -1,29 +1,39 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
-  <label for="title">Title</label>
-  <input id="title" type="text" [formControl]="form.controls.title">
 
-  <label for="description">Description</label>
-  <input id="description" type="text" [formControl]="form.controls.description">
+  <app-form-field>
+    <app-form-field-label>Title</app-form-field-label>
+    <input type="text" [formControl]="form.controls.title">
+  </app-form-field>
 
-  <label for="user">assign to user</label>
-  <select id="user" type="text" [formControl]="form.controls.user">
-    <option disabled selected> please select user</option>
-    @for (option of userSelectOptions$ | async; track option.value) {
-      <option [value]="option.value">{{ option.text }}</option>
-    } @empty {
-      <option disabled> Users not found</option>
-    }
-  </select>
+  <app-form-field>
+    <app-form-field-label>Description</app-form-field-label>
+    <input type="text" [formControl]="form.controls.description">
+  </app-form-field>
 
-  <label for="column">bing to column</label>
-  <select id="column" type="text" [formControl]="form.controls.column">
-    <option disabled selected> please select column</option>
-    @for (column of columnSelectOptions$ | async; track column.value) {
-      <option [value]="column.value">{{ column.text }}</option>
-    } @empty {
-      <option disabled> Columns not found</option>
-    }
-  </select>
+  <app-form-field>
+    <app-form-field-label> Select user</app-form-field-label>
+    <select type="text" [formControl]="form.controls.user">
+      <option disabled selected> please select user</option>
+      @for (option of userSelectOptions$ | async; track option.value) {
+        <option [value]="option.value">{{ option.text }}</option>
+      } @empty {
+        <option disabled> Users not found</option>
+      }
+    </select>
+  </app-form-field>
+
+  <app-form-field>
+    <app-form-field-label> Select Column</app-form-field-label>
+    <select id="column" type="text" [formControl]="form.controls.column">
+      <option disabled selected> please select column</option>
+      @for (column of columnSelectOptions$ | async; track column.value) {
+        <option [value]="column.value">{{ column.text }}</option>
+      } @empty {
+        <option disabled> Columns not found</option>
+      }
+    </select>
+  </app-form-field>
+
 
   <button type="submit" [disabled]="!form.valid">Send</button>
 </form>
