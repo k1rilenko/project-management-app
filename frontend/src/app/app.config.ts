@@ -12,6 +12,7 @@ import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 import { CustomSerializer } from './store/router/custom-serializer';
 import { provideUsersStore } from './store/users/users.provider';
 import { provideTasksStore } from './store/tasks/tasks.provider';
+import { provideNotificationStore } from './store/notification/notification.provider';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -24,6 +25,7 @@ export const appConfig: ApplicationConfig = {
     provideColumnsStore(),
     provideUsersStore(),
     provideTasksStore(),
+    provideNotificationStore(),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideRouterStore({ serializer: CustomSerializer }),
   ],
