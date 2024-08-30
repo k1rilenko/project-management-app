@@ -7,8 +7,8 @@ export const usersActions = {
   getUsersFailed: createAction('[Users] Get Users Failed'),
 
   setCurrentUser: createAction('[Users] Set Current User'),
-  setCurrentUserSuccess: createAction('[Users] Set Current User Success', props<{ userEntity: UserEntity | null }>()),
-  setCurrentUserFailed: createAction('[Users] Set Current User Failed'),
+  setCurrentUserSuccess: createAction('[Users] Set Current User Success', props<{ userEntity: UserEntity }>()),
+  deleteCurrentUser: createAction('[Users] Delete Current User'),
 
   startLoading: createAction('[Users] Starting Loading'),
   stopLoading: createAction('[Users] Stop Loading'),

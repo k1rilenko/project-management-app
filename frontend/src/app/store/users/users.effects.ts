@@ -7,9 +7,9 @@ import { getAllUsersRequest } from '../../services/api/requests/user/get-all-use
 import { UserEntityMapper } from './mappers/user-entity.mapper';
 import { TokenService } from '../../services/token/token.service';
 import { jwtDecode } from 'jwt-decode';
-import { fromStorage } from '../../services/storage/from-storage.function';
 import { toObservable } from '@angular/core/rxjs-interop';
 import { getUserRequest } from '../../services/api/requests/user/get-user.request';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class UsersEffects {
@@ -17,6 +17,7 @@ export class UsersEffects {
   private apiService = inject(ApiService);
   private usersEntityMapper = inject(UserEntityMapper);
   private tokenService = inject(TokenService);
+  private router = inject(Router);
 
   getUsers$ = createEffect(() =>
     this.actions$.pipe(
@@ -30,21 +31,31 @@ export class UsersEffects {
     ),
   );
 
-  //TODO NEED TO REFACTORING
   setCurrentUser$ = createEffect(() =>
     toObservable(this.tokenService.getTokenSignal()).pipe(
       switchMap(token => {
         if (token) {
           const decodedToken: any = jwtDecode(token);
           const userIdFromToken = decodedToken.userId;
-          return this.apiService.send(getUserRequest(userIdFromToken)).pipe(map(userDto => this.usersEntityMapper.mapFrom(userDto)));
+          return this.apiService.send(getUserRequest(userIdFromToken)).pipe(
+            map(userDto => this.usersEntityMapper.mapFrom(userDto)),
+            map(userEntity => usersActions.setCurrentUserSuccess({ userEntity })),
+          );
         } else {
-          return of(null);
+          return of(usersActions.deleteCurrentUser());
         }
       }),
-      map(userEntityOrNull => usersActions.setCurrentUserSuccess({ userEntity: userEntityOrNull })),
       catchError(() => of(usersActions.getUsersFailed())),
     ),
+  );
+
+  logoutUser$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(usersActions.deleteCurrentUser),
+        tap(() => this.router.navigateByUrl('welcome')),
+      ),
+    { dispatch: false },
   );
 
   startLoading$ = createEffect(() =>

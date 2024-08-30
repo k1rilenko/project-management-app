@@ -3,15 +3,19 @@ import { WelcomePageComponent } from './domains/welcome-page/welcome-page.compon
 import { createModalRoute } from './domains/modal/factory/modal-route.factory';
 import { ModalPathEnum } from './domains/modal/modal-path.enum';
 import { CONFIRM_DIALOG_PARAM } from './domains/confirmation-dialog/models/confirm-dialog-param.const';
+import { NotAuthGuard } from './guards/not-auth.guard';
+import { AuthGuard } from './guards/auth.guard';
 
 export const routes: Routes = [
   {
     path: 'welcome',
     component: WelcomePageComponent,
+    canActivate: [AuthGuard],
   },
   {
     path: 'main',
     loadChildren: () => import('./domains/main-page/main-page.routes').then(m => m.mainPageRoutes),
+    canActivate: [NotAuthGuard],
   },
 
   {
