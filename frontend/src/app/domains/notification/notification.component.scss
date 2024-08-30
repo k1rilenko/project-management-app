@@ -1,0 +1,35 @@
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+.notification {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  border: 1px solid white;
+  border-radius: var(--border-radius);
+  padding: 8px;
+  margin-bottom: 4px;
+
+  &_error {
+    background-color: tomato;
+  }
+
+  &_info {
+    background-color: cornflowerblue;
+  }
+
+  &_success {
+    background-color: darkolivegreen;
+  }
+
+  &_warning {
+    background-color: goldenrod;
+  }
+
+  &__text {
+    font-size: 14px;
+    color: white;
+  }
+}

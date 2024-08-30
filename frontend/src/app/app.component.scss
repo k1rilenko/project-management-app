@@ -64,3 +64,9 @@ main {
   box-sizing: inherit;
   position: relative;
 }
+
+.notifications {
+  position: fixed;
+  right: 16px;
+  top: 16px;
+}
