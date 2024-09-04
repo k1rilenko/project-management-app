@@ -39,6 +39,7 @@ export class BoardComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.store.dispatch(boardsActions.getBoards()); //TODO MAY BE NEED DISPATCH IN OTHER PLACE
     this.store.dispatch(boardsActions.getBoard());
     this.store.dispatch(columnsActions.getColumns());
   }

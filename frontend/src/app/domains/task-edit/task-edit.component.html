@@ -1,1 +1,53 @@
-<p>task-edit works!</p>
+@if (vm$ | async; as vm) {
+  @if (form$| async; as form) {
+    <form class="task" [formGroup]="form" (ngSubmit)="submit()">
+      <div class="task__body">
+        <app-form-field>
+          <app-form-field-label>Title</app-form-field-label>
+          <input type="text" [formControl]="form.controls.title">
+        </app-form-field>
+
+        <app-form-field>
+          <app-form-field-label>Description</app-form-field-label>
+          <textarea [formControl]="form.controls.description"> </textarea>
+        </app-form-field>
+
+        <app-button class="task__button"> submit</app-button>
+      </div>
+      <div class="task__aside">
+
+        <app-form-field>
+          <app-form-field-label> Assignee:</app-form-field-label>
+          <select [formControl]="form.controls.user">
+            @for (option of vm.userOptions; track option.value) {
+              <option [value]="option.value">{{ option.name }}
+              </option>
+            }
+          </select>
+        </app-form-field>
+
+        <app-form-field>
+          <app-form-field-label> Relate to column:</app-form-field-label>
+          <select [formControl]="form.controls.column">
+            @for (option of vm.columnOptions; track option.value) {
+              <option [value]="option.value">{{ option.name }}
+              </option>
+            }
+          </select>
+        </app-form-field>
+
+        <app-form-field>
+          <app-form-field-label> Relate to board:</app-form-field-label>
+          <select [formControl]="form.controls.board">
+            @for (option of vm.boardOptions; track option.value) {
+              <option [value]="option.value">{{ option.name }}
+              </option>
+            }
+          </select>
+        </app-form-field>
+      </div>
+    </form>
+  }
+
+}
+

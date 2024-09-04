@@ -1,0 +1,20 @@
+:host {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.task {
+  display: grid !important;
+  grid-template-columns: 3fr 1fr;
+  height: inherit;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__button {
+    margin-top: auto;
+  }
+}
