@@ -69,6 +69,24 @@ export const routes: Routes = [
     ],
   }),
   createModalRoute({
+    path: ModalPathEnum.VIEW_TASK,
+    children: [
+      {
+        path: ':taskId',
+        loadComponent: () => import('./domains/task/task.component').then(c => c.TaskComponent),
+      },
+    ],
+  }),
+  createModalRoute({
+    path: ModalPathEnum.EDIT_TASK,
+    children: [
+      {
+        path: ':taskId',
+        loadComponent: () => import('./domains/task-edit/task-edit.component').then(c => c.TaskEditComponent),
+      },
+    ],
+  }),
+  createModalRoute({
     path: ModalPathEnum.CONFIRMATION_DIALOG,
     children: [
       {

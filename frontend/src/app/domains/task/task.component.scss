@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.task {
+  box-sizing: border-box;
+  display: grid;
+  padding: 16px;
+  grid-template-columns: 3fr 1fr;
+  height: 100%;
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    margin-right: 16px;
+  }
+
+  &__aside {
+    border-left: 1px solid lightgray;
+    padding-left: 16px;
+  }
+
+  &__edit {
+    margin-top: auto;
+  }
+
+  &__label {
+    font-weight: 700;
+    text-decoration: underline;
+  }
+}

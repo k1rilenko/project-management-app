@@ -1,5 +1,5 @@
 @if (vm$ | async; as vm) {
-  <article class="task">
+  <article class="task" (click)="openTask($event)">
     <p class="task__row task__title">
       <span class="task__label"> task title:</span>
       <span class="task__value"> {{ vm.title }}</span></p>

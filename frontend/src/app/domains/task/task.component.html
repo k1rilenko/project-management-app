@@ -1,0 +1,29 @@
+@if (vm$ | async; as task) {
+  <div class="task">
+    <div class="task__body">
+      <div class="task__row task__title">
+        <span class="task__label">Title:</span>
+        <p class="task__value">{{ task.title }}</p>
+      </div>
+
+      <div class="task__row task__description">
+        <span class="task__label">Description:</span>
+        <p class="task__value">{{ task.description }}</p>
+      </div>
+
+      <app-button class="task__edit" (click)="editTask()"> Edit task</app-button>
+    </div>
+    <div class="task__aside">
+      <div class="task__row task__assignee">
+        <span class="task__label">Assignee:</span>
+        <p class="task__value">{{ task.userName }}</p>
+      </div>
+
+      <div class="task__row task__relate">
+        <span class="task__label">Relate to column:</span>
+        <p class="task__value">{{ task.columnName }}</p>
+      </div>
+    </div>
+  </div>
+
+}

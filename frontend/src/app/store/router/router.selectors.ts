@@ -18,6 +18,8 @@ export const routerSelectors = {
   urlSegments: createSelector(selectRouterState, state => state?.urlSegments),
   params: {
     boardId: createSelector(selectParams, params => params?.boardId),
+    columnId: createSelector(selectParams, params => params?.columnId),
+    taskId: createSelector(selectParams, params => params?.taskId),
   },
   queryParams: {
     bonus: createSelector(selectQueryParams, queryParams => queryParams?.bonus),
