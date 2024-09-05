@@ -21,4 +21,4 @@ export interface TaskEditOptions {
   boardOptions: BoardOptionModel[];
 }
 
-export interface TaskEditViewModel extends Pick<TaskEntity, 'title' | 'description'>, TaskEditOptions {}
+export interface TaskEditViewModel extends Pick<TaskEntity, 'title' | 'description' | 'id'>, TaskEditOptions {}

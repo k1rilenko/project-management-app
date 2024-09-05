@@ -6,11 +6,14 @@ import { TaskEntity } from '../../store/tasks/models/task.entity';
 import { tasksSelectors } from '../../store/tasks/tasks.selectors';
 import { AsyncPipe, JsonPipe } from '@angular/common';
 import { TaskPreviewComponent } from '../task-preview/task-preview.component';
-import { FormBuilder, FormControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { columnsActions } from '../../store/columns/columns.actions';
 import { CdkDrag, CdkDragDrop, CdkDropList } from '@angular/cdk/drag-drop';
 import { tasksActions } from '../../store/tasks/tasks.actions';
+import { ModalService } from '../modal/modal.service';
+import { ModalPathEnum } from '../modal/modal-path.enum';
+import { ConfirmationDialogName } from '../confirmation-dialog/models/confirmation-dialog-name.enum';
 
 @Component({
   selector: 'app-column',
@@ -28,6 +31,7 @@ export class ColumnComponent implements OnInit {
   constructor(
     private store: Store,
     private formBuilder: NonNullableFormBuilder,
+    private modalService: ModalService,
   ) {
     this.columnTitle = this.formBuilder.control('', [Validators.minLength(3)]);
   }
@@ -66,5 +70,9 @@ export class ColumnComponent implements OnInit {
         }),
       );
     }
+  }
+
+  deleteColumn() {
+    this.modalService.open([ModalPathEnum.CONFIRMATION_DIALOG, ConfirmationDialogName.DELETE_COLUMN, this.column.id]);
   }
 }

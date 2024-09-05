@@ -11,7 +11,8 @@
         <p class="task__value">{{ task.description }}</p>
       </div>
 
-      <app-button class="task__edit" (click)="editTask()"> Edit task</app-button>
+      <app-button class="task__edit" (click)="editTask(task.id)"> Edit task</app-button>
+      <app-button class="task__delete" (click)="deleteTask(task.id)"> Delete task</app-button>
     </div>
     <div class="task__aside">
       <div class="task__row task__assignee">

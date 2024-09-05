@@ -90,7 +90,7 @@ export const routes: Routes = [
     path: ModalPathEnum.CONFIRMATION_DIALOG,
     children: [
       {
-        path: `:${CONFIRM_DIALOG_PARAM}/:id`,
+        path: `:${CONFIRM_DIALOG_PARAM}/:confirmationDialogParam`,
         loadComponent: () => import('./domains/confirmation-dialog/confirmation-dialog.component').then(c => c.ConfirmationDialogComponent),
       },
     ],

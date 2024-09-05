@@ -37,6 +37,10 @@ export const columnsActions = {
     }>(),
   ),
 
+  deleteColumn: createAction('[Columns] Delete Column', props<{ columnId: ColumnEntity['id'] }>()),
+  deleteColumnSuccess: createAction('[Columns] Delete Column Success', props<{ columnId: ColumnEntity['id'] }>()),
+  deleteColumnFailed: createAction('[Columns] Delete Column Failed'),
+
   startLoading: createAction('[Columns] Starting Loading'),
   stopLoading: createAction('[Columns] Stop Loading'),
 };

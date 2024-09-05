@@ -12,6 +12,7 @@ import { columnsSelectors } from '../../store/columns/columns.selectors';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { Router } from '@angular/router';
 import { ModalPathEnum } from '../modal/modal-path.enum';
+import { ConfirmationDialogName } from '../confirmation-dialog/models/confirmation-dialog-name.enum';
 
 @Component({
   selector: 'app-task',
@@ -23,7 +24,6 @@ import { ModalPathEnum } from '../modal/modal-path.enum';
 })
 export class TaskComponent {
   public vm$: Observable<TaskViewModel | undefined>;
-  private taskId: string | null = null;
 
   constructor(
     private store: Store,
@@ -39,10 +39,10 @@ export class TaskComponent {
               this.store.select(usersSelectors.userById(taskEntity.userId)),
               this.store.select(columnsSelectors.columnById(taskEntity.columnId)),
             ]).pipe(
-              tap(() => (this.taskId = taskId)),
               map(([userEntity, columnEntity]) => {
                 if (userEntity && columnEntity) {
                   const vm: TaskViewModel = {
+                    id: taskId,
                     columnName: columnEntity.title,
                     userName: userEntity.name,
                     title: taskEntity.title,
@@ -59,9 +59,11 @@ export class TaskComponent {
     );
   }
 
-  editTask() {
-    if (this.taskId) {
-      this.router.navigate([{ outlets: { modal: [ModalPathEnum.EDIT_TASK, this.taskId] } }]);
-    }
+  editTask(taskId: TaskEntity['id']) {
+    this.router.navigate([{ outlets: { modal: [ModalPathEnum.EDIT_TASK, taskId] } }]);
+  }
+
+  deleteTask(taskId: TaskEntity['id']) {
+    this.router.navigate([{ outlets: { modal: [ModalPathEnum.CONFIRMATION_DIALOG, ConfirmationDialogName.DELETE_TASK, taskId] } }]);
   }
 }

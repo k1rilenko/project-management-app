@@ -32,4 +32,15 @@ export const tasksReducer = createReducer(
       _state,
     );
   }),
+  on(actions.updateTaskSuccess, (_state, { taskEntity }) =>
+    adapter.updateOne(
+      {
+        id: taskEntity.id,
+        changes: taskEntity,
+      },
+      _state,
+    ),
+  ),
+  on(actions.deleteTaskSuccess, (_state, { taskId }) => adapter.removeOne(taskId, _state)),
+  on(actions.deleteTasksSuccess, (_state, { taskIds }) => adapter.removeMany(taskIds, _state)),
 );

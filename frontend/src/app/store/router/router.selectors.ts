@@ -20,6 +20,7 @@ export const routerSelectors = {
     boardId: createSelector(selectParams, params => params?.boardId),
     columnId: createSelector(selectParams, params => params?.columnId),
     taskId: createSelector(selectParams, params => params?.taskId),
+    confirmationDialogParam: createSelector(selectParams, params => params?.confirmationDialogParam),
   },
   queryParams: {
     bonus: createSelector(selectQueryParams, queryParams => queryParams?.bonus),

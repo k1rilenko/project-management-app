@@ -2,7 +2,7 @@ import { effect, inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { ApiService } from '../../services/api/api.service';
 import { tasksActions } from './tasks.actions';
-import { catchError, filter, forkJoin, map, mergeMap, of, switchMap, take, tap, withLatestFrom } from 'rxjs';
+import { catchError, filter, forkJoin, map, mergeMap, Observable, of, switchMap, take, tap, withLatestFrom } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { columnsSelectors } from '../columns/columns.selectors';
 import { getAllTasksRequest } from '../../services/api/requests/task/get-all-tasks.request';
@@ -16,6 +16,7 @@ import { tasksSelectors } from './tasks.selectors';
 import { updateTaskRequest, UpdateTaskRequestParam } from '../../services/api/requests/task/update-task.request';
 import { UpdateTaskRequestBodyMapper } from './mappers/update-task-request-body.mapper';
 import { ModalService } from '../../domains/modal/modal.service';
+import { deleteTaskRequest, DeleteTaskRequestParam } from '../../services/api/requests/task/delete-task.request';
 
 @Injectable()
 export class TasksEffects {
@@ -113,4 +114,83 @@ export class TasksEffects {
       ),
     { dispatch: false },
   );
+
+  updateTask$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(tasksActions.updateTask),
+      switchMap(({ params: { taskId, body } }) =>
+        this.store.select(tasksSelectors.taskById(taskId)).pipe(
+          take(1),
+          filter(isNotUndefined),
+          switchMap(taskEntity => {
+            const { boardId, columnId, id } = taskEntity;
+
+            const requestParams: UpdateTaskRequestParam = {
+              boardId,
+              columnId,
+              taskId: id,
+              body: { ...body, order: 1 },
+            };
+
+            return this.apiService.send(updateTaskRequest(requestParams)).pipe(
+              map(taskDto => {
+                const taskEntity = this.taskEntityMapper.mapFrom(taskDto);
+                return tasksActions.updateTaskSuccess({ taskEntity });
+              }),
+              catchError(() => of(tasksActions.updateTaskFailed())),
+            );
+          }),
+        ),
+      ),
+    ),
+  );
+
+  deleteTask$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(tasksActions.deleteTask),
+      switchMap(({ taskId }) =>
+        this.getTaskDeleteParam(taskId).pipe(
+          switchMap(params => this.apiService.send(deleteTaskRequest(params))),
+          map(() => tasksActions.deleteTaskSuccess({ taskId })),
+          catchError(() => of(tasksActions.deleteTaskFailed())),
+        ),
+      ),
+    ),
+  );
+
+  deleteTasks$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(columnsActions.deleteColumnSuccess),
+      switchMap(({ columnId }) =>
+        this.store.select(tasksSelectors.tasksForColumn(columnId)).pipe(
+          take(1),
+          map(tasksEntities => tasksEntities.map(taskEntity => taskEntity.id)),
+          map(taskIds => tasksActions.deleteTasksSuccess({ taskIds })),
+        ),
+      ),
+    ),
+  );
+
+  closeModal$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(tasksActions.deleteTaskSuccess, tasksActions.updateTaskSuccess),
+        map(() => this.modalService.close()),
+      ),
+    { dispatch: false },
+  );
+
+  private getTaskDeleteParam(taskId: TaskEntity['id']): Observable<DeleteTaskRequestParam> {
+    return this.store.select(tasksSelectors.taskById(taskId)).pipe(
+      filter(isNotUndefined),
+      map(({ boardId, columnId, id }) => {
+        const deleteTaskRequestParam: DeleteTaskRequestParam = {
+          boardId,
+          columnId,
+          taskId: id,
+        };
+        return deleteTaskRequestParam;
+      }),
+    );
+  }
 }

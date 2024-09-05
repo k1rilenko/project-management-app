@@ -1,7 +1,8 @@
 import { createAction, props } from '@ngrx/store';
 import { TaskEntity } from './models/task.entity';
-import { CreateTaskRequestBody, CreateTaskRequestParam } from '../../services/api/requests/task/create-task.request';
+import { CreateTaskRequestParam } from '../../services/api/requests/task/create-task.request';
 import { ColumnEntity } from '../columns/models/column.entity';
+import { UpdateTaskRequestBody } from '../../services/api/requests/task/update-task.request';
 
 export type CreateTaskActionParam = Omit<CreateTaskRequestParam, 'boardId'>;
 export type UpdateTaskActionParam = CreateTaskActionParam;
@@ -26,9 +27,20 @@ export const tasksActions = {
     }>(),
   ),
 
-  updateTask: createAction('[Task] Update Task', props<{ params: UpdateTaskActionParam }>()),
+  updateTask: createAction(
+    '[Task] Update Task',
+    props<{
+      params: { taskId: TaskEntity['id']; body: Omit<UpdateTaskRequestBody, 'order'> };
+    }>(),
+  ),
   updateTaskSuccess: createAction('[Task] Update Task Success', props<{ taskEntity: TaskEntity }>()),
   updateTaskFailed: createAction('[Task] Update Task Failed'),
+
+  deleteTask: createAction('[Task] Delete Task', props<{ taskId: TaskEntity['id'] }>()),
+  deleteTaskSuccess: createAction('[Task] Delete Task Success', props<{ taskId: TaskEntity['id'] }>()),
+  deleteTaskFailed: createAction('[Task] Delete Task Failed'),
+
+  deleteTasksSuccess: createAction('[Task] Delete Tasks Success', props<{ taskIds: TaskEntity['id'][] }>()),
 
   startLoading: createAction('[Tasks] Starting Loading', props<{ taskId: TaskEntity['id'] }>()),
   stopLoading: createAction('[Tasks] Stop Loading', props<{ taskId: TaskEntity['id'] }>()),

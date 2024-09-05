@@ -1,6 +1,6 @@
 @if (vm$ | async; as vm) {
   @if (form$| async; as form) {
-    <form class="task" [formGroup]="form" (ngSubmit)="submit()">
+    <form class="task" [formGroup]="form" (ngSubmit)="submit(vm.id)">
       <div class="task__body">
         <app-form-field>
           <app-form-field-label>Title</app-form-field-label>

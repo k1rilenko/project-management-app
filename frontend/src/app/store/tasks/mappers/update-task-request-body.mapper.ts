@@ -1,6 +1,5 @@
 import { MapperInterface } from '../../../utils/mapper';
 import { TaskEntity } from '../models/task.entity';
-import { UpdateTaskDto } from '../../../services/api/dto/update-task.dto';
 import { Injectable } from '@angular/core';
 import { UpdateTaskRequestBody } from '../../../services/api/requests/task/update-task.request';
 

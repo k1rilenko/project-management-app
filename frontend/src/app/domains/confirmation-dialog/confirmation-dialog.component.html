@@ -1,5 +1,7 @@
-<p>confirmation-dialog works!</p>
-{{ message }}
+@if (message$ | async; as message) {
+  {{ message }}
+}
+
 
 <app-button (click)="onConfirm()">OK</app-button>
 <app-button>CLOSE</app-button>

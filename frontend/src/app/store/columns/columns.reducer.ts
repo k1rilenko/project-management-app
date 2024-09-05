@@ -27,4 +27,5 @@ export const columnsReducer = createReducer(
       _state,
     );
   }),
+  on(actions.deleteColumnSuccess, (_state, { columnId }) => adapter.removeOne(columnId, _state)),
 );

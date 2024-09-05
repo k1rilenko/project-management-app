@@ -3,12 +3,17 @@ import { inject, Injectable } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { boardsActions } from '../../../store/boards/boards.actions';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable()
 export class DeleteBoardConfirmationDialogConfig extends AbstractConfirmationDialogConfig {
-  message = 'Delete Board Confirmation Dialog';
   private store = inject(Store);
-  private deleteID = inject(ActivatedRoute).snapshot.paramMap.get('id');
+  private deleteID = inject(ActivatedRoute).snapshot.paramMap.get('confirmationDialogParam');
+
+  constructor() {
+    super();
+    this.setMessage('Delete Board Confirmation Dialog');
+  }
 
   onConfirm() {
     if (this.deleteID) {

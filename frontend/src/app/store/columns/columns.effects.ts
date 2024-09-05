@@ -16,7 +16,7 @@ import {
   UpdateColumnRequestBody,
   UpdateColumnRequestParams,
 } from '../../services/api/requests/column/update-column.request';
-import { ColumnEntity } from './models/column.entity';
+import { deleteColumnRequest } from '../../services/api/requests/column/delete-column.request';
 
 @Injectable()
 export class ColumnsEffects {
@@ -103,6 +103,24 @@ export class ColumnsEffects {
           map(({ order, id }) => columnsActions.updateColumn({ columnId: id, data: { order } })),
         ),
       ),
+    ),
+  );
+
+  deleteColumn$ = createEffect(() =>
+    this.actions$.pipe(
+      ofType(columnsActions.deleteColumn),
+      withLatestFrom(this.store.select(routerSelectors.params.boardId).pipe(filter(boardId => isNotUndefined(boardId)))),
+      switchMap(([{ columnId }, boardId]) =>
+        this.apiService
+          .send(
+            deleteColumnRequest({
+              columnId,
+              boardId,
+            }),
+          )
+          .pipe(map(() => columnsActions.deleteColumnSuccess({ columnId }))),
+      ),
+      catchError(() => of(columnsActions.deleteColumnFailed())),
     ),
   );
 

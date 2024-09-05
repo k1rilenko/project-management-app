@@ -14,6 +14,8 @@ import { TaskEditFormControls, TaskEditFormParams } from './models/form.models';
 import { FormFieldComponent } from '../form/form-field/form-field.component';
 import { FormFieldLabelComponent } from '../form/form-field-label/form-field-label.component';
 import { ButtonComponent } from '../../shared/button/button.component';
+import { tasksActions } from '../../store/tasks/tasks.actions';
+import { UpdateTaskRequestBody } from '../../services/api/requests/task/update-task.request';
 
 @Component({
   selector: 'app-task-edit',
@@ -42,6 +44,7 @@ export class TaskEditComponent implements OnInit {
           filter(isNotUndefined),
           map(taskEntity => {
             const vm: TaskEditViewModel = {
+              id: taskId,
               title: taskEntity.title,
               description: taskEntity.description,
               boardOptions: boardEntities.map(boardEntity => ({
@@ -82,8 +85,18 @@ export class TaskEditComponent implements OnInit {
     this.form$.subscribe(v => console.log(v));
   }
 
-  submit() {
-    console.log(this.form$.value?.getRawValue());
+  submit(taskId: string) {
+    const formValue = this.form$.value?.getRawValue();
+    if (formValue) {
+      const body: Omit<UpdateTaskRequestBody, 'order'> = {
+        title: formValue.title,
+        description: formValue.description,
+        columnId: formValue.column,
+        userId: formValue.user,
+        boardId: formValue.board,
+      };
+      this.store.dispatch(tasksActions.updateTask({ params: { taskId, body } }));
+    }
   }
 
   private getForm(params: TaskEditFormParams) {

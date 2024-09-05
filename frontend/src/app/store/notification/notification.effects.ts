@@ -10,7 +10,7 @@ export class NotificationEffects {
   deleteNotification$ = createEffect(() =>
     this.actions$.pipe(
       ofType(notificationActions.addNotification),
-      delay(3000),
+      delay(10000),
       map(() => notificationActions.deleteNotification()),
     ),
   );

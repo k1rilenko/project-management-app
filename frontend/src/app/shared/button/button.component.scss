@@ -1,7 +1,9 @@
 :host {
   display: flex;
   width: max-content;
+  height: min-content;
 }
+
 .button {
   display: inherit;
   cursor: pointer;
