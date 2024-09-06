@@ -3,7 +3,6 @@ import { ButtonComponent } from '../../shared/button/button.component';
 import { ModalService } from '../modal/modal.service';
 import { ModalPathEnum } from '../modal/modal-path.enum';
 import { UserInfoComponent } from '../user-info/user-info.component';
-import { Router } from '@angular/router';
 import { TokenService } from '../../services/token/token.service';
 
 @Component({
@@ -25,5 +24,9 @@ export class HeaderComponent {
 
   logOut() {
     this.tokenService.deleteToken();
+  }
+
+  editProfile() {
+    this.modalService.open(ModalPathEnum.EDIT_USER);
   }
 }

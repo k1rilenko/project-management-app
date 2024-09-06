@@ -3,7 +3,7 @@ import { Router } from '@angular/router';
 import { ModalPathEnum } from './modal-path.enum';
 import { ConfirmationDialogName } from '../confirmation-dialog/models/confirmation-dialog-name.enum';
 
-export type ModalPathTuple = [ModalPathEnum, ConfirmationDialogName, string];
+type ConfirmationDialogParam = string;
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +11,12 @@ export type ModalPathTuple = [ModalPathEnum, ConfirmationDialogName, string];
 export class ModalService {
   constructor(private router: Router) {}
 
-  public open(path: ModalPathEnum | ModalPathTuple) {
+  public open(path: ModalPathEnum): void;
+  public open(path: [ModalPathEnum, ConfirmationDialogName]): void;
+  public open(path: [ModalPathEnum, ConfirmationDialogName, ConfirmationDialogParam]): void;
+  public open(
+    path: ModalPathEnum | [ModalPathEnum, ConfirmationDialogName] | [ModalPathEnum, ConfirmationDialogName, ConfirmationDialogParam],
+  ): void {
     this.router.navigate([{ outlets: { modal: path } }]);
   }
 

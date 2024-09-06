@@ -1,0 +1,1 @@
+export const NOTIFICATION_DISPLAY_TIMER = 5000;

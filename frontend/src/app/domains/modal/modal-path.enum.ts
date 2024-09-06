@@ -6,5 +6,6 @@ export enum ModalPathEnum {
   CREATE_TASK = 'create-task',
   VIEW_TASK = 'view-task',
   EDIT_TASK = 'edit-task',
+  EDIT_USER = 'edit-user',
   CONFIRMATION_DIALOG = 'confirmation-dialog',
 }

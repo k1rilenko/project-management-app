@@ -1,17 +1,10 @@
 import { Component } from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  FormsModule,
-  NonNullableFormBuilder,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { KeyValuePipe, NgForOf, NgIf } from '@angular/common';
+import { FormControl, FormGroup, FormsModule, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgIf } from '@angular/common';
 import { ApiService } from '../../services/api/api.service';
 import { signUpRequest, SignUpRequestBody } from '../../services/api/requests/sign-up.request';
+import { Store } from '@ngrx/store';
+import { signUpActions } from '../../store/sign-up/sign-up.actions';
 
 @Component({
   selector: 'app-sign-up',
@@ -31,7 +24,7 @@ export class SignUpComponent {
 
   constructor(
     private formBuilder: NonNullableFormBuilder,
-    private apiService: ApiService,
+    private store: Store,
   ) {
     this.signUpForm = this.getSignUpForm();
   }
@@ -39,13 +32,13 @@ export class SignUpComponent {
   private getSignUpForm() {
     return this.formBuilder.group({
       login: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', [Validators.required, Validators.minLength(7)]],
     });
   }
 
   toggleNameInput() {
     if (!this.shownNameFormField) {
-      this.signUpForm.addControl('name', this.formBuilder.control(''));
+      this.signUpForm.addControl('name', this.formBuilder.control('', Validators.minLength(6)));
       this.shownNameFormField = true;
     } else {
       this.signUpForm.removeControl('name');
@@ -59,7 +52,6 @@ export class SignUpComponent {
       formValue.name = formValue.login;
     }
 
-    this.apiService.send(signUpRequest(formValue as SignUpRequestBody)).subscribe();
-    console.log(this.signUpForm.value);
+    this.store.dispatch(signUpActions.signUp({ requestBody: formValue as SignUpRequestBody }));
   }
 }

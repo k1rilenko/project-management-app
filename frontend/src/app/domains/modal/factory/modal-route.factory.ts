@@ -9,7 +9,7 @@ export function createModalRoute(params: ModalRouteParams): Route {
   return {
     component: ModalComponent,
     outlet: 'modal',
-    canActivate: [NotAuthGuard],
+    // canActivate: [NotAuthGuard], //TODO NEED FIX. LOGIN AND SIGNUP NOT WORKING
     ...params,
   };
 }

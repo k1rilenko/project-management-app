@@ -87,8 +87,22 @@ export const routes: Routes = [
     ],
   }),
   createModalRoute({
+    path: ModalPathEnum.EDIT_USER,
+    children: [
+      {
+        path: '',
+        loadComponent: () => import('./domains/user-edit/user-edit.component').then(c => c.UserEditComponent),
+      },
+    ],
+  }),
+
+  createModalRoute({
     path: ModalPathEnum.CONFIRMATION_DIALOG,
     children: [
+      {
+        path: `:${CONFIRM_DIALOG_PARAM}`,
+        loadComponent: () => import('./domains/confirmation-dialog/confirmation-dialog.component').then(c => c.ConfirmationDialogComponent),
+      },
       {
         path: `:${CONFIRM_DIALOG_PARAM}/:confirmationDialogParam`,
         loadComponent: () => import('./domains/confirmation-dialog/confirmation-dialog.component').then(c => c.ConfirmationDialogComponent),

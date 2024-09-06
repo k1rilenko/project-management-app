@@ -13,6 +13,10 @@ import { CustomSerializer } from './store/router/custom-serializer';
 import { provideUsersStore } from './store/users/users.provider';
 import { provideTasksStore } from './store/tasks/tasks.provider';
 import { provideNotificationStore } from './store/notification/notification.provider';
+import { provideEffects } from '@ngrx/effects';
+import { UsersEffects } from './store/users/users.effects';
+import { ModalEffects } from './domains/modal/modal.effects';
+import { SignUpEffects } from './store/sign-up/sign-up.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -26,6 +30,7 @@ export const appConfig: ApplicationConfig = {
     provideUsersStore(),
     provideTasksStore(),
     provideNotificationStore(),
+    provideEffects([ModalEffects, SignUpEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideRouterStore({ serializer: CustomSerializer }),
   ],
