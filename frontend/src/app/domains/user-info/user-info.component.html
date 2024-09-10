@@ -1,5 +1,6 @@
 @if (user$ | async; as user) {
   <div class="user">
+    <app-svg-icon class="user__icon" icon="user"></app-svg-icon>
     <p class="user__text text">
       <span class="text__label">user: {{ user.name }}</span>
       <span class="text__value"></span>
