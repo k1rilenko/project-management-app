@@ -1,12 +1,7 @@
-<p>login works!</p>
-
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="loginForm" (ngSubmit)="submit()">
   <label for="login">Login</label>
   <input id="login" type="text" [formControl]="loginForm.controls.login">
   <label for="password">Password</label>
   <input id="password" type="text" formControlName="password">
   <button type="submit" [disabled]="!loginForm.valid">Send</button>
 </form>
-
-
-<pre>{{ loginForm.value | json }}</pre>

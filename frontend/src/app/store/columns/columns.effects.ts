@@ -54,7 +54,6 @@ export class ColumnsEffects {
             const columnEntity = this.columnEntityMapper.mapFrom(columnDto);
             return columnsActions.createColumnSuccess({ columnEntity });
           }),
-          tap(() => this.modalService.close()),
         ),
       ),
       catchError(() => of(columnsActions.createColumnFailed())),

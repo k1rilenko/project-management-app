@@ -17,6 +17,7 @@ import { provideEffects } from '@ngrx/effects';
 import { UsersEffects } from './store/users/users.effects';
 import { ModalEffects } from './domains/modal/modal.effects';
 import { SignUpEffects } from './store/sign-up/sign-up.effects';
+import { LoginEffects } from './store/login/login.effects';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -30,7 +31,7 @@ export const appConfig: ApplicationConfig = {
     provideUsersStore(),
     provideTasksStore(),
     provideNotificationStore(),
-    provideEffects([ModalEffects, SignUpEffects]),
+    provideEffects([ModalEffects, SignUpEffects, LoginEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideRouterStore({ serializer: CustomSerializer }),
   ],

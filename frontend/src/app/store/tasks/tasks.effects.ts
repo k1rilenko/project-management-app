@@ -85,7 +85,6 @@ export class TasksEffects {
         );
       }),
       map(taskEntity => tasksActions.createTaskSuccess({ taskEntity })),
-      tap(() => this.modalService.close()),
       catchError(() => of(tasksActions.createTaskFailed())),
     ),
   );
@@ -169,15 +168,6 @@ export class TasksEffects {
         ),
       ),
     ),
-  );
-
-  closeModal$ = createEffect(
-    () =>
-      this.actions$.pipe(
-        ofType(tasksActions.deleteTaskSuccess, tasksActions.updateTaskSuccess),
-        map(() => this.modalService.close()),
-      ),
-    { dispatch: false },
   );
 
   private getTaskDeleteParam(taskId: TaskEntity['id']): Observable<DeleteTaskRequestParam> {

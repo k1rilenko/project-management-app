@@ -43,7 +43,6 @@ export class BoardsEffects {
             const boardEntity = this.boardEntityMapper.mapFrom(board);
             return boardsActions.createBoardSuccess({ boardEntity });
           }),
-          tap(() => this.modalService.close()),
           catchError(() => of(boardsActions.deleteBoardFailed())),
         ),
       ),
@@ -56,7 +55,6 @@ export class BoardsEffects {
       switchMap(({ boardId }) =>
         this.apiService.send(deleteBoardRequest(boardId)).pipe(
           map(() => boardsActions.deleteBoardSuccess({ boardId })),
-          tap(() => this.modalService.close()),
           catchError(() => of(boardsActions.deleteBoardFailed())),
         ),
       ),

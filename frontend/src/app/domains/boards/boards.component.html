@@ -1,4 +1,3 @@
-HERE I SHOWN ALL FORMS
 <div class="boards">
   @if (loading$ | async) {
     <p> Loading....</p>
@@ -6,6 +5,7 @@ HERE I SHOWN ALL FORMS
 
   @if (boards$ | async; as boards) {
     <div class="boards__wrapper">
+      <p class="boards__text"> Please select board</p>
       @for (board of boards; track board.id) {
         <app-board-preview class="boards__item" [board]="board"></app-board-preview>
       } @empty {

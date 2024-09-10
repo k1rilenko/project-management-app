@@ -1,12 +1,8 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
-import { ApiService } from '../../services/api/api.service';
-import { signInRequest, SignInRequestBody } from '../../services/api/requests/sign-in.request';
-import { Router, RouterOutlet } from '@angular/router';
-import { TokenService } from '../../services/token/token.service';
-import { Token } from '../../services/token/token.model';
-import { ModalService } from '../modal/modal.service';
+import { Store } from '@ngrx/store';
+import { loginActions } from '../../store/login/login.actions';
 
 @Component({
   selector: 'app-login',
@@ -19,11 +15,8 @@ export class LoginComponent {
   public loginForm: ReturnType<typeof this.getSignInForm>;
 
   constructor(
-    private apiService: ApiService,
     private formBuilder: NonNullableFormBuilder,
-    private tokenService: TokenService,
-    private router: Router,
-    private modalService: ModalService,
+    private store: Store,
   ) {
     this.loginForm = this.getSignInForm();
   }
@@ -35,11 +28,8 @@ export class LoginComponent {
     });
   }
 
-  onSubmit() {
+  submit() {
     const body = this.loginForm.getRawValue();
-    this.apiService.send(signInRequest(body)).subscribe(({ token }) => {
-      this.tokenService.setToken(token as Token);
-      this.modalService.close().then(() => this.router.navigate(['/main']));
-    });
+    this.store.dispatch(loginActions.login({ requestBody: body }));
   }
 }
