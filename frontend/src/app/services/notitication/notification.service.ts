@@ -7,7 +7,7 @@ import { NotificationEntity } from '../../store/notification/models/notification
   providedIn: 'root',
 })
 export class NotificationService {
-  public store = inject(Store);
+  private store = inject(Store);
 
   public success(message: NotificationEntity['message']): void {
     this.addNotification(message, 'success');
