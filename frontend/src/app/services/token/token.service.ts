@@ -6,8 +6,6 @@ import { fromStorage } from '../storage/from-storage.function';
   providedIn: 'root',
 })
 export class TokenService {
-  constructor() {}
-
   private readonly token = fromStorage<Token>(Token_Storage_Key);
 
   public getToken(): Token {

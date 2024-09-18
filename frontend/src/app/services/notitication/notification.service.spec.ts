@@ -7,7 +7,7 @@ import { notificationActions } from '../../store/notification/notification.actio
 import { NotificationEntity } from '../../store/notification/models/notification.entity';
 import { NotificationType } from '../../store/notification/models/notification-type.type';
 
-fdescribe('NotificationService', () => {
+describe('NotificationService', () => {
   let service: NotificationService;
   let storeStub: StoreStub;
 
