@@ -2,10 +2,8 @@ import { AbstractConfirmationDialogConfig } from './abstract-confirmation-dialog
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { routerSelectors } from '../../../store/router/router.selectors';
-import { tasksActions } from '../../../store/tasks/tasks.actions';
-import { BehaviorSubject, filter, map, Observable, switchMap, take } from 'rxjs';
+import { filter, map, switchMap, take } from 'rxjs';
 import { isNotUndefined } from '../../../utils/is-not-undefined';
-import { tasksSelectors } from '../../../store/tasks/tasks.selectors';
 import { columnsSelectors } from '../../../store/columns/columns.selectors';
 import { columnsActions } from '../../../store/columns/columns.actions';
 
@@ -41,9 +39,5 @@ export class DeleteColumnConfirmationDialogConfig extends AbstractConfirmationDi
     if (this.columnId) {
       this.store.dispatch(columnsActions.deleteColumn({ columnId: this.columnId }));
     }
-  }
-
-  onCancel() {
-    console.log('Delete Board Confirmation Dialog onCancel');
   }
 }

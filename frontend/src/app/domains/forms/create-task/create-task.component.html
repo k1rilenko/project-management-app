@@ -1,19 +1,19 @@
 <form [formGroup]="form" (ngSubmit)="submit()">
 
   <app-form-field>
-    <app-form-field-label>Title</app-form-field-label>
+    <app-form-field-label>{{ 'create-task-form.title' | translate }}</app-form-field-label>
     <input type="text" [formControl]="form.controls.title">
   </app-form-field>
 
   <app-form-field>
-    <app-form-field-label>Description</app-form-field-label>
+    <app-form-field-label>{{ 'create-task-form.description' | translate }}</app-form-field-label>
     <input type="text" [formControl]="form.controls.description">
   </app-form-field>
 
   <app-form-field>
-    <app-form-field-label> Select user</app-form-field-label>
+    <app-form-field-label>{{ 'create-task-form.user' | translate }}</app-form-field-label>
     <select type="text" [formControl]="form.controls.user">
-      <option disabled selected> please select user</option>
+      <option disabled selected> {{ 'create-task-form.user' | translate }}</option>
       @for (option of userSelectOptions$ | async; track option.value) {
         <option [value]="option.value">{{ option.text }}</option>
       } @empty {
@@ -23,9 +23,9 @@
   </app-form-field>
 
   <app-form-field>
-    <app-form-field-label> Select Column</app-form-field-label>
+    <app-form-field-label>{{ 'create-task-form.column' | translate }}</app-form-field-label>
     <select id="column" type="text" [formControl]="form.controls.column">
-      <option disabled selected> please select column</option>
+      <option disabled selected> {{ 'create-task-form.column' | translate }}</option>
       @for (column of columnSelectOptions$ | async; track column.value) {
         <option [value]="column.value">{{ column.text }}</option>
       } @empty {
@@ -35,5 +35,5 @@
   </app-form-field>
 
 
-  <button type="submit" [disabled]="!form.valid">Send</button>
+  <button type="submit" [disabled]="!form.valid">{{ 'create-task-form.submit' | translate }}</button>
 </form>

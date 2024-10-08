@@ -2,12 +2,11 @@
   <section class="board">
     <h1 class="board__title"> {{ board.title }}</h1>
     <div class="board__controls">
-      <app-button routerLink="/main">Go to all boards</app-button>
-      <app-button (click)="createBoard()"> Add column</app-button>
-      <app-button *ngIf="isEmptyBoard$ | async" (click)="createTask()"> Add task</app-button>
+      <app-button routerLink="/main">{{ 'board.back' | translate }}</app-button>
+      <app-button (click)="createBoard()"> {{ 'board.add-column' | translate }}</app-button>
+      <app-button *ngIf="isEmptyBoard$ | async" (click)="createTask()"> {{ 'board.add-task' | translate }}</app-button>
     </div>
     @if (columns$ | async; as columns) {
-      <h1> Columns:</h1>
       <div class="board__wrapper">
         <div
           class="board__columns"
@@ -20,7 +19,7 @@
             <app-column class="board__column" [column]="column" cdkDrag [cdkDragData]="column">
             </app-column>
           } @empty {
-            Columns empty!!!
+            {{ 'board.empty' | translate }}
           }
         </div>
       </div>

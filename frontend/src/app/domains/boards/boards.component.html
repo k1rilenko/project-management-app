@@ -5,7 +5,7 @@
 
   @if (boards$ | async; as boards) {
     <div class="boards__wrapper">
-      <p class="boards__text"> Please select board</p>
+      <p class="boards__text">{{ 'boards-page.title' | translate }}</p>
       @for (board of boards; track board.id) {
         <app-board-preview class="boards__item" [board]="board"></app-board-preview>
       } @empty {

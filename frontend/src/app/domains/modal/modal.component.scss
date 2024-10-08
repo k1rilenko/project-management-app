@@ -28,7 +28,9 @@
     flex-direction: column;
     width: 50vw;
     height: 50vh;
+    min-width: 320px;
     border: 1px solid white;
+    border-radius: var(--border-radius);
     background: darkslateblue;
     //  TODO REMOVE HERE
     &::ng-deep {

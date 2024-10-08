@@ -11,11 +11,12 @@ import { ButtonComponent } from '../../shared/button/button.component';
 import { ModalPathEnum } from '../modal/modal-path.enum';
 import { TokenService } from '../../services/token/token.service';
 import { ModalService } from '../modal/modal.service';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-user-info',
   standalone: true,
-  imports: [AsyncPipe, SvgIconComponent, DropdownMenuComponent, ClickOutsideDirective, NgIf, ButtonComponent],
+  imports: [AsyncPipe, SvgIconComponent, DropdownMenuComponent, ClickOutsideDirective, NgIf, ButtonComponent, TranslateModule],
   templateUrl: './user-info.component.html',
   styleUrl: './user-info.component.scss',
 })

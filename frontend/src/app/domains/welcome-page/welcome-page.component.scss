@@ -10,7 +10,6 @@
   height: 100%;
 
   &__auth {
-    display: flex;
     margin-left: auto;
   }
 
@@ -20,8 +19,15 @@
     align-items: center;
     font-size: 48px;
     font-weight: 700;
+    text-align: center;
     margin: auto 0;
     color: lightgray;
   }
+}
+
+.auth {
+  display: flex;
+  padding: 16px 0;
+  gap: 8px;
 }
 

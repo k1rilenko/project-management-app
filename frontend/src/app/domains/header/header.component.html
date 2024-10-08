@@ -1,6 +1,8 @@
 <div class="header">
   <div class="header__buttons">
-    <app-button class="header__button" (click)="createBoard()">Create new board</app-button>
+    <app-button class="header__button" (click)="createBoard()">{{ 'header.create-board-button'| translate }}
+    </app-button>
+    <app-language-selector></app-language-selector>
   </div>
   <app-user-info class="header__info user"></app-user-info>
 </div>

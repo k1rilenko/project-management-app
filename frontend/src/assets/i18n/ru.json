@@ -1,0 +1,86 @@
+{
+  "header": {
+    "create-board-button": "Создать новую доску"
+  },
+  "boards-page": {
+    "title": "Выберите доску"
+  },
+  "board-preview": {
+    "title": "Название",
+    "description": "Описание",
+    "delete": "Удалить доску"
+  },
+  "user-info": {
+    "title": "Пользователь",
+    "edit-profile-button": "Изменить профиль",
+    "logout-button": "Выход"
+  },
+  "board": {
+    "back": "Назад к списку досок",
+    "add-column": "Добавить колонку",
+    "add-task": "Добавить задачу",
+    "empty": "Нет колонок"
+  },
+  "column": {
+    "cancel-rename": "Отменить",
+    "submit-rename": "Подтвердить",
+    "delete-column": "Удалить колонку"
+  },
+  "task": {
+    "title": "Название",
+    "assignee": "Исполнитель",
+    "description": "Описание",
+    "relate-to": "Привязана к колонке",
+    "edit": "Редактировать задачу",
+    "delete": "Удалить задачу"
+  },
+  "auth": {
+    "login": "Вход",
+    "signup": "Регистрация"
+  },
+  "login-form": {
+    "login": "Введите Login",
+    "password": "Введите password",
+    "submit": "Войти"
+  },
+  "signup-form": {
+    "login": "Введите Login",
+    "password": "Введите password",
+    "name": "Введите Имя пользователя",
+    "show-name": "Хочу указать имя пользователя",
+    "submit": "Регистрация"
+  },
+  "create-board-form": {
+    "title": "Введите название доски",
+    "description": "Введите описание доски",
+    "submit": "Создать доску"
+  },
+  "create-column-form": {
+    "title": "Введите название колонки",
+    "submit": "Добавить колонку"
+  },
+  "task-form": {
+    "title": "Введите название задачи",
+    "description": "Введите описание задачи",
+    "user": "Выберите какому пользователю поручить",
+    "column": "Выберите колонку",
+    "board": "выберите доску",
+    "submit": "Создать задачу",
+    "edit": "Сохранить"
+  },
+  "edit-user-form": {
+    "login": "введите Логин",
+    "name": "Введите Имя пользователя",
+    "password": "Введите пароль",
+    "confirm-password": "Повторить пароль",
+    "edit": "Сохранить изменения",
+    "delete": "Удалить пользователя"
+  },
+  "confirm-dialog": {
+    "confirm": "Подтвердить",
+    "cancel": "Отменить"
+  },
+  "modal": {
+    "close": "Закрыть"
+  }
+}

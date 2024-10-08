@@ -13,11 +13,12 @@ import { ButtonComponent } from '../../shared/button/button.component';
 import { Router } from '@angular/router';
 import { ModalPathEnum } from '../modal/modal-path.enum';
 import { ConfirmationDialogName } from '../confirmation-dialog/models/confirmation-dialog-name.enum';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-task',
   standalone: true,
-  imports: [AsyncPipe, ButtonComponent],
+  imports: [AsyncPipe, ButtonComponent, TranslateModule],
   templateUrl: './task.component.html',
   styleUrl: './task.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

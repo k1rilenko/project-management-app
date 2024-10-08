@@ -1,10 +1,10 @@
 @if (vm$ | async; as vm) {
   <article class="task" (click)="openTask($event)">
     <p class="task__row task__title">
-      <span class="task__label"> task title:</span>
+      <span class="task__label"> {{ 'task.title' | translate }}:</span>
       <span class="task__value"> {{ vm.title }}</span></p>
     <p class="task__row task__user-assign">
-      <span class="task__label">user:</span>
+      <span class="task__label">{{ 'task.assignee' | translate }}:</span>
       <span class="task__value"> {{ vm.userName }}</span>
     </p>
   </article>

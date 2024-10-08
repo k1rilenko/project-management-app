@@ -3,27 +3,27 @@
     <form class="edit-user__form form" [formGroup]="form" (ngSubmit)="submit(form)">
       <div class="form__body">
         <app-form-field>
-          <app-form-field-label>Login</app-form-field-label>
+          <app-form-field-label>{{ 'edit-user-form.login' | translate }}</app-form-field-label>
           <input type="text" [formControl]="form.controls.login">
         </app-form-field>
         <app-form-field>
-          <app-form-field-label>Name</app-form-field-label>
+          <app-form-field-label>{{ 'edit-user-form.name' | translate }}</app-form-field-label>
           <input type="text" [formControl]="form.controls.name">
         </app-form-field>
 
         <app-form-field>
-          <app-form-field-label>Password</app-form-field-label>
+          <app-form-field-label>{{ 'edit-user-form.password' | translate }}</app-form-field-label>
           <input type="password" [formControl]="form.controls.password">
         </app-form-field>
 
         <app-form-field [customErrors]="formFieldErrors">
-          <app-form-field-label>Confirm Password</app-form-field-label>
+          <app-form-field-label>{{ 'edit-user-form.confirm-password' | translate }}</app-form-field-label>
           <input type="password" [formControl]="form.controls.confirmPassword">
         </app-form-field>
       </div>
-      <app-button>Edit User</app-button>
+      <app-button>{{ 'edit-user-form.edit' | translate }}</app-button>
     </form>
   }
-  <app-button (click)="deleteUser()"> Delete user</app-button>
+  <app-button (click)="deleteUser()"> {{ 'edit-user-form.delete' | translate }}</app-button>
 </div>
 

@@ -6,11 +6,12 @@ import { ModalService } from '../modal/modal.service';
 import { Router } from '@angular/router';
 import { ModalPathEnum } from '../modal/modal-path.enum';
 import { ConfirmationDialogName } from '../confirmation-dialog/models/confirmation-dialog-name.enum';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-board-preview',
   standalone: true,
-  imports: [ButtonComponent],
+  imports: [ButtonComponent, TranslateModule],
   templateUrl: './board-preview.component.html',
   styleUrl: './board-preview.component.scss',
 })

@@ -1,0 +1,14 @@
+<form [formGroup]="form" (ngSubmit)="submit()">
+
+  <app-form-field>
+    <app-form-field-label>{{ 'create-board-form.title' | translate }}</app-form-field-label>
+    <input type="text" [formControl]="form.controls.title">
+  </app-form-field>
+
+  <app-form-field>
+    <app-form-field-label>{{ 'create-board-form.description' | translate }}</app-form-field-label>
+    <input type="text" [formControl]="form.controls.description">
+  </app-form-field>
+
+  <button type="submit" [disabled]="!form.valid">{{ 'create-board-form.submit' | translate }}</button>
+</form>

@@ -6,11 +6,12 @@ import { BoardEntity } from '../../store/boards/models/board.entity';
 import { boardsSelector } from '../../store/boards/boards.selectors';
 import { CommonModule } from '@angular/common';
 import { BoardPreviewComponent } from '../board-preview/board-preview.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-boards',
   standalone: true,
-  imports: [CommonModule, BoardPreviewComponent],
+  imports: [CommonModule, BoardPreviewComponent, TranslateModule],
   templateUrl: './boards.component.html',
   styleUrl: './boards.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

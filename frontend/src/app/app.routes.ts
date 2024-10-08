@@ -28,7 +28,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./domains/login/login.component').then(c => c.LoginComponent),
+        loadComponent: () => import('./domains/forms/login/login.component').then(c => c.LoginComponent),
       },
     ],
   }),
@@ -37,7 +37,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./domains/sign-up/sign-up.component').then(c => c.SignUpComponent),
+        loadComponent: () => import('./domains/forms/sign-up/sign-up.component').then(c => c.SignUpComponent),
       },
     ],
   }),
@@ -46,7 +46,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./domains/create-board/create-board.component').then(c => c.CreateBoardComponent),
+        loadComponent: () => import('./domains/forms/create-board/create-board.component').then(c => c.CreateBoardComponent),
       },
     ],
   }),
@@ -55,7 +55,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./domains/create-column/create-column.component').then(c => c.CreateColumnComponent),
+        loadComponent: () => import('./domains/forms/create-column/create-column.component').then(c => c.CreateColumnComponent),
       },
     ],
   }),
@@ -64,7 +64,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./domains/create-task/create-task.component').then(c => c.CreateTaskComponent),
+        loadComponent: () => import('./domains/forms/create-task/create-task.component').then(c => c.CreateTaskComponent),
       },
     ],
   }),
@@ -82,7 +82,7 @@ export const routes: Routes = [
     children: [
       {
         path: ':taskId',
-        loadComponent: () => import('./domains/task-edit/task-edit.component').then(c => c.TaskEditComponent),
+        loadComponent: () => import('./domains/forms/task-edit/task-edit.component').then(c => c.TaskEditComponent),
       },
     ],
   }),
@@ -91,7 +91,7 @@ export const routes: Routes = [
     children: [
       {
         path: '',
-        loadComponent: () => import('./domains/user-edit/user-edit.component').then(c => c.UserEditComponent),
+        loadComponent: () => import('./domains/forms/user-edit/user-edit.component').then(c => c.UserEditComponent),
       },
     ],
   }),

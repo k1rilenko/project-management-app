@@ -1,7 +1,9 @@
 <div class="welcome-page">
-  <div class="welcome-page__auth">
-    <app-button (click)="openModal(ModalPathEnum.LOGIN)">Log in</app-button>
-    <app-button (click)="openModal(ModalPathEnum.SIGNUP)">Sign up</app-button>
+  <div class="welcome-page__auth auth">
+    <app-button class="auth__button" (click)="openModal(ModalPathEnum.LOGIN)">{{ 'auth.login' | translate }}
+    </app-button>
+    <app-button class="auth__button" (click)="openModal(ModalPathEnum.SIGNUP)">{{ 'auth.signup' | translate }}
+    </app-button>
   </div>
 
   <p class="welcome-page__text">

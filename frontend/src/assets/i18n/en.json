@@ -1,0 +1,86 @@
+{
+  "header": {
+    "create-board-button": "Create new board"
+  },
+  "boards-page": {
+    "title": "Select board"
+  },
+  "board-preview": {
+    "title": "title",
+    "description": "description",
+    "delete": "delete board"
+  },
+  "user-info": {
+    "title": "user",
+    "edit-profile-button": "Edit profile",
+    "logout-button": "Logout"
+  },
+  "board": {
+    "back": "Go to all boards",
+    "add-column": "Add column",
+    "add-task": "Add task",
+    "empty": "Not Columns"
+  },
+  "column": {
+    "cancel-rename": "Cancel",
+    "submit-rename": "Submit",
+    "delete-column": "Delete column"
+  },
+  "task": {
+    "title": "Title",
+    "assignee": "Assignee",
+    "description": "Description",
+    "relate-to": "Relate to column",
+    "edit": "Edit task",
+    "delete": "Delete task"
+  },
+  "auth": {
+    "login": "Log in",
+    "signup": "Sign up"
+  },
+  "login-form": {
+    "login": "Enter login",
+    "password": "Enter password",
+    "submit": "Login"
+  },
+  "signup-form": {
+    "login": "Enter login",
+    "password": "Enter password",
+    "name": "Enter name",
+    "show-name": "Show name input",
+    "submit": "Registration"
+  },
+  "create-board-form": {
+    "title": "Enter board title",
+    "description": "Enter board description",
+    "submit": "Create board"
+  },
+  "create-column-form": {
+    "title": "Enter column title",
+    "submit": "Add column"
+  },
+  "task-form": {
+    "title": "Enter task title",
+    "description": "Enter task description",
+    "user": "Assignee",
+    "column": "Relate to column",
+    "board": "Relate to board",
+    "submit": "Create task",
+    "edit": "Save task"
+  },
+  "edit-user-form": {
+    "login": "Enter login",
+    "name": "Enter name",
+    "password": "Enter password",
+    "confirm-password": "Confirm password",
+    "edit": "Edit user",
+    "delete": "Delete user"
+  },
+  "confirm-dialog": {
+    "confirm": "Confirm",
+    "cancel": "Cancel"
+  },
+  "modal": {
+    "close": "Close"
+  }
+}

@@ -32,8 +32,4 @@ export class DeleteUserConfirmationDialogConfig extends AbstractConfirmationDial
   onConfirm() {
     this.store.dispatch(usersActions.deleteUser());
   }
-
-  onCancel() {
-    console.log('Delete Board Confirmation Dialog onCancel');
-  }
 }

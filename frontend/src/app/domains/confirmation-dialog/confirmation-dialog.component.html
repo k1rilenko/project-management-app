@@ -3,5 +3,5 @@
 }
 
 
-<app-button (click)="onConfirm()">OK</app-button>
-<app-button>CLOSE</app-button>
+<app-button (click)="onConfirm()">{{ confirmText | translate }}</app-button>
+<app-button (click)="onCancel()">{{ cancelText | translate }}</app-button>

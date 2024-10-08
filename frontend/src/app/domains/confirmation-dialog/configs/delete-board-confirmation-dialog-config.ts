@@ -20,8 +20,4 @@ export class DeleteBoardConfirmationDialogConfig extends AbstractConfirmationDia
       this.store.dispatch(boardsActions.deleteBoard({ boardId: this.deleteID }));
     }
   }
-
-  onCancel() {
-    console.log('Delete Board Confirmation Dialog onCancel');
-  }
 }

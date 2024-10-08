@@ -1,0 +1,7 @@
+<div class="language">
+  @for (language of languages; track language) {
+    <button [class.active]="(currentLanguage$ | async) === language" class="language__button"
+            (click)="changeLanguage(language)"> {{ language }}
+    </button>
+  }
+</div>

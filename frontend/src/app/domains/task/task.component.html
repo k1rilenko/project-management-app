@@ -2,26 +2,26 @@
   <div class="task">
     <div class="task__body">
       <div class="task__row task__title">
-        <span class="task__label">Title:</span>
+        <span class="task__label">{{ 'task.title' | translate }}:</span>
         <p class="task__value">{{ task.title }}</p>
       </div>
 
       <div class="task__row task__description">
-        <span class="task__label">Description:</span>
+        <span class="task__label">{{ 'task.description' | translate }}:</span>
         <p class="task__value">{{ task.description }}</p>
       </div>
 
-      <app-button class="task__edit" (click)="editTask(task.id)"> Edit task</app-button>
-      <app-button class="task__delete" (click)="deleteTask(task.id)"> Delete task</app-button>
+      <app-button class="task__edit" (click)="editTask(task.id)">{{ 'task.edit' | translate }}</app-button>
+      <app-button class="task__delete" (click)="deleteTask(task.id)">{{ 'task.delete' | translate }}</app-button>
     </div>
     <div class="task__aside">
       <div class="task__row task__assignee">
-        <span class="task__label">Assignee:</span>
+        <span class="task__label">{{ 'task.assignee' | translate }}:</span>
         <p class="task__value">{{ task.userName }}</p>
       </div>
 
       <div class="task__row task__relate">
-        <span class="task__label">Relate to column:</span>
+        <span class="task__label">{{ 'task.relate-to' | translate }}:</span>
         <p class="task__value">{{ task.columnName }}</p>
       </div>
     </div>

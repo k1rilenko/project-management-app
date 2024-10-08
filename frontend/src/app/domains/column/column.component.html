@@ -1,8 +1,10 @@
 <div class="column">
   <div class="column__title title" [class.show-controls]="isFocus">
     <div class="title__controls">
-      <app-button class="title__control title__control_cancel">cancel</app-button>
-      <app-button class="title__control title__control_submit" (click)="renameColumnTitle()">submit</app-button>
+      <app-button class="title__control title__control_cancel">{{ 'column.cancel-rename' | translate }}</app-button>
+      <app-button class="title__control title__control_submit"
+                  (click)="renameColumnTitle()">{{ 'column.submit-rename' | translate }}
+      </app-button>
     </div>
     <input class="title__input" type="text" [formControl]="columnTitle" (focus)="changeFocusStatus(true)"
            (blur)="changeFocusStatus(false)">
@@ -18,5 +20,6 @@
       }
     </div>
   }
-  <app-button class="column__delete-button" (click)="deleteColumn()"> delete column</app-button>
+  <app-button class="column__delete-button" (click)="deleteColumn()">{{ 'column.delete-column' | translate }}
+  </app-button>
 </div>

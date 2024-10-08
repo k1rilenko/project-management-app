@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { routerSelectors } from '../../../store/router/router.selectors';
 import { tasksActions } from '../../../store/tasks/tasks.actions';
-import { BehaviorSubject, filter, map, Observable, switchMap, take } from 'rxjs';
+import { filter, map, switchMap, take } from 'rxjs';
 import { isNotUndefined } from '../../../utils/is-not-undefined';
 import { tasksSelectors } from '../../../store/tasks/tasks.selectors';
 
@@ -39,9 +39,5 @@ export class DeleteTaskConfirmationDialogConfig extends AbstractConfirmationDial
     if (this.taskID) {
       this.store.dispatch(tasksActions.deleteTask({ taskId: this.taskID }));
     }
-  }
-
-  onCancel() {
-    console.log('Delete Board Confirmation Dialog onCancel');
   }
 }

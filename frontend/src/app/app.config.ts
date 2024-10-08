@@ -1,10 +1,10 @@
-import { ApplicationConfig, provideZoneChangeDetection, isDevMode } from '@angular/core';
+import { ApplicationConfig, provideZoneChangeDetection, isDevMode, importProvidersFrom, inject, APP_INITIALIZER } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
 import { provideStore } from '@ngrx/store';
-import { provideHttpClient } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient, provideHttpClient } from '@angular/common/http';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { provideBoardStore } from './store/boards/boards.provider';
 import { provideColumnsStore } from './store/columns/columns.provider';
@@ -14,12 +14,17 @@ import { provideUsersStore } from './store/users/users.provider';
 import { provideTasksStore } from './store/tasks/tasks.provider';
 import { provideNotificationStore } from './store/notification/notification.provider';
 import { provideEffects } from '@ngrx/effects';
-import { UsersEffects } from './store/users/users.effects';
 import { ModalEffects } from './domains/modal/modal.effects';
 import { SignUpEffects } from './store/sign-up/sign-up.effects';
 import { LoginEffects } from './store/login/login.effects';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideAnimations } from '@angular/platform-browser/animations';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
+export function HttpLoaderFactory() {
+  const httpClient = inject(HttpClient);
+  return new TranslateHttpLoader(httpClient, './assets/i18n/', '.json');
+}
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -37,5 +42,13 @@ export const appConfig: ApplicationConfig = {
     provideEffects([ModalEffects, SignUpEffects, LoginEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideRouterStore({ serializer: CustomSerializer }),
+    importProvidersFrom(
+      TranslateModule.forRoot({
+        loader: {
+          provide: TranslateLoader,
+          useFactory: HttpLoaderFactory,
+        },
+      }),
+    ),
   ],
 };

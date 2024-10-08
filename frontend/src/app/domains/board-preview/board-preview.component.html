@@ -2,14 +2,15 @@
   <div class="board" (click)="openBoard()">
     <div class="board__text">
       <div class="board__row">
-        <span class="board__label">title:</span> <span class="board__value">{{ board.title }}</span>
+        <span class="board__label">{{ 'board-preview.title' | translate }}:</span> <span
+        class="board__value">{{ board.title }}</span>
       </div>
-
       <div class="board__row">
-        <span class="board__label">description:</span> <span class="board__value">{{ board.description }}</span>
+        <span class="board__label">{{ 'board-preview.description' | translate }}:</span> <span
+        class="board__value">{{ board.description }}</span>
       </div>
     </div>
-    <app-button (click)="deleteBoard($event)">delete board</app-button>
+    <app-button (click)="deleteBoard($event)">{{ 'board-preview.delete' | translate }}</app-button>
   </div>
 }
 

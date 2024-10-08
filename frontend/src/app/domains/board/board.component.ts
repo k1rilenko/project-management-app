@@ -16,11 +16,12 @@ import { columnsActions } from '../../store/columns/columns.actions';
 import { boardsActions } from '../../store/boards/boards.actions';
 import { CdkDrag, CdkDragDrop, CdkDropList, CdkDropListGroup } from '@angular/cdk/drag-drop';
 import { RouterLink } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-board',
   standalone: true,
-  imports: [AsyncPipe, ButtonComponent, ColumnComponent, CdkDropList, CdkDrag, CdkDropListGroup, RouterLink, NgIf],
+  imports: [AsyncPipe, ButtonComponent, ColumnComponent, CdkDropList, CdkDrag, CdkDropListGroup, RouterLink, NgIf, TranslateModule],
   templateUrl: './board.component.html',
   styleUrl: './board.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

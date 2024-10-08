@@ -7,6 +7,7 @@ import { animations } from '../header/header.animations';
 import { AsyncPipe, DOCUMENT } from '@angular/common';
 import { debounceTime, distinctUntilChanged, fromEvent, map, Observable, startWith, tap } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TranslationService } from '../../services/translation/translation.service';
 
 @Component({
   selector: 'app-main-page',

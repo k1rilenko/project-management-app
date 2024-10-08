@@ -2,23 +2,26 @@ import { Component } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { JsonPipe } from '@angular/common';
 import { Store } from '@ngrx/store';
-import { loginActions } from '../../store/login/login.actions';
+import { loginActions } from '../../../store/login/login.actions';
+import { FormFieldComponent } from '../../form/form-field/form-field.component';
+import { FormFieldLabelComponent } from '../../form/form-field-label/form-field-label.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, JsonPipe],
+  imports: [ReactiveFormsModule, JsonPipe, FormFieldComponent, FormFieldLabelComponent, TranslateModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
 export class LoginComponent {
-  public loginForm: ReturnType<typeof this.getSignInForm>;
+  public form: ReturnType<typeof this.getSignInForm>;
 
   constructor(
     private formBuilder: NonNullableFormBuilder,
     private store: Store,
   ) {
-    this.loginForm = this.getSignInForm();
+    this.form = this.getSignInForm();
   }
 
   private getSignInForm() {
@@ -29,7 +32,7 @@ export class LoginComponent {
   }
 
   submit() {
-    const body = this.loginForm.getRawValue();
+    const body = this.form.getRawValue();
     this.store.dispatch(loginActions.login({ requestBody: body }));
   }
 }

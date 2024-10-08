@@ -1,7 +1,7 @@
-import { UserEntity } from '../../../store/users/models/user.entity';
-import { ColumnEntity } from '../../../store/columns/models/column.entity';
-import { BoardEntity } from '../../../store/boards/models/board.entity';
-import { TaskEntity } from '../../../store/tasks/models/task.entity';
+import { UserEntity } from '../../../../store/users/models/user.entity';
+import { ColumnEntity } from '../../../../store/columns/models/column.entity';
+import { BoardEntity } from '../../../../store/boards/models/board.entity';
+import { TaskEntity } from '../../../../store/tasks/models/task.entity';
 
 export interface OptionModel<I, N> {
   value: I;

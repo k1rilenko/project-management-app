@@ -14,11 +14,12 @@ import { tasksActions } from '../../store/tasks/tasks.actions';
 import { ModalService } from '../modal/modal.service';
 import { ModalPathEnum } from '../modal/modal-path.enum';
 import { ConfirmationDialogName } from '../confirmation-dialog/models/confirmation-dialog-name.enum';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-column',
   standalone: true,
-  imports: [AsyncPipe, JsonPipe, TaskPreviewComponent, ButtonComponent, ReactiveFormsModule, CdkDropList, CdkDrag],
+  imports: [AsyncPipe, JsonPipe, TaskPreviewComponent, ButtonComponent, ReactiveFormsModule, CdkDropList, CdkDrag, TranslateModule],
   templateUrl: './column.component.html',
   styleUrl: './column.component.scss',
 })

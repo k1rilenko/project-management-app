@@ -1,31 +1,32 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject, combineLatest, filter, map, Observable, switchMap, tap } from 'rxjs';
 import { TaskEditOptions, TaskEditViewModel } from './models/task-edit.view-model';
-import { routerSelectors } from '../../store/router/router.selectors';
-import { boardsSelector } from '../../store/boards/boards.selectors';
-import { columnsSelectors } from '../../store/columns/columns.selectors';
-import { usersSelectors } from '../../store/users/users.selectors';
-import { isNotUndefined } from '../../utils/is-not-undefined';
-import { tasksSelectors } from '../../store/tasks/tasks.selectors';
+import { routerSelectors } from '../../../store/router/router.selectors';
+import { boardsSelector } from '../../../store/boards/boards.selectors';
+import { columnsSelectors } from '../../../store/columns/columns.selectors';
+import { usersSelectors } from '../../../store/users/users.selectors';
+import { isNotUndefined } from '../../../utils/is-not-undefined';
+import { tasksSelectors } from '../../../store/tasks/tasks.selectors';
 import { AsyncPipe } from '@angular/common';
-import { FormBuilder, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { TaskEditFormControls, TaskEditFormParams } from './models/form.models';
-import { FormFieldComponent } from '../form/form-field/form-field.component';
-import { FormFieldLabelComponent } from '../form/form-field-label/form-field-label.component';
-import { ButtonComponent } from '../../shared/button/button.component';
-import { tasksActions } from '../../store/tasks/tasks.actions';
-import { UpdateTaskRequestBody } from '../../services/api/requests/task/update-task.request';
+import { FormFieldComponent } from '../../form/form-field/form-field.component';
+import { FormFieldLabelComponent } from '../../form/form-field-label/form-field-label.component';
+import { ButtonComponent } from '../../../shared/button/button.component';
+import { tasksActions } from '../../../store/tasks/tasks.actions';
+import { UpdateTaskRequestBody } from '../../../services/api/requests/task/update-task.request';
+import { TranslateModule } from '@ngx-translate/core';
 
 @Component({
   selector: 'app-task-edit',
   standalone: true,
-  imports: [AsyncPipe, ReactiveFormsModule, FormFieldComponent, FormFieldLabelComponent, ButtonComponent],
+  imports: [AsyncPipe, ReactiveFormsModule, FormFieldComponent, FormFieldLabelComponent, ButtonComponent, TranslateModule],
   templateUrl: './task-edit.component.html',
   styleUrl: './task-edit.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class TaskEditComponent implements OnInit {
+export class TaskEditComponent {
   public vm$: Observable<TaskEditViewModel | undefined>;
   public form$ = new BehaviorSubject<FormGroup<TaskEditFormControls> | null>(null);
 
@@ -79,10 +80,6 @@ export class TaskEditComponent implements OnInit {
         ),
       ),
     );
-  }
-
-  ngOnInit() {
-    this.form$.subscribe(v => console.log(v));
   }
 
   submit(taskId: string) {

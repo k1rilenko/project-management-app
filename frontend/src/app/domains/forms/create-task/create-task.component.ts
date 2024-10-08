@@ -1,15 +1,16 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { map, Observable } from 'rxjs';
-import { usersSelectors } from '../../store/users/users.selectors';
-import { UserEntity } from '../../store/users/models/user.entity';
+import { usersSelectors } from '../../../store/users/users.selectors';
+import { UserEntity } from '../../../store/users/models/user.entity';
 import { AsyncPipe } from '@angular/common';
-import { ColumnEntity } from '../../store/columns/models/column.entity';
-import { columnsSelectors } from '../../store/columns/columns.selectors';
-import { CreateTaskActionParam, tasksActions } from '../../store/tasks/tasks.actions';
-import { FormFieldLabelComponent } from '../form/form-field-label/form-field-label.component';
-import { FormFieldComponent } from '../form/form-field/form-field.component';
+import { ColumnEntity } from '../../../store/columns/models/column.entity';
+import { columnsSelectors } from '../../../store/columns/columns.selectors';
+import { CreateTaskActionParam, tasksActions } from '../../../store/tasks/tasks.actions';
+import { FormFieldLabelComponent } from '../../form/form-field-label/form-field-label.component';
+import { FormFieldComponent } from '../../form/form-field/form-field.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 export interface UserSelectOptionsInterface {
   text: UserEntity['name'];
@@ -24,7 +25,7 @@ export interface ColumnSelectOptionsInterface {
 @Component({
   selector: 'app-create-task',
   standalone: true,
-  imports: [ReactiveFormsModule, AsyncPipe, FormFieldLabelComponent, FormFieldComponent],
+  imports: [ReactiveFormsModule, AsyncPipe, FormFieldLabelComponent, FormFieldComponent, TranslateModule],
   templateUrl: './create-task.component.html',
   styleUrl: './create-task.component.scss',
 })

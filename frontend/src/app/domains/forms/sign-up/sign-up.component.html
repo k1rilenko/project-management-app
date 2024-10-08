@@ -1,0 +1,26 @@
+<form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+  <app-form-field>
+    <app-form-field-label>{{ 'signup-form.login' | translate }}</app-form-field-label>
+    <input type="text" [formControl]="form.controls.login">
+  </app-form-field>
+  <label>
+    <input type="checkbox" [checked]="shownNameFormField" (change)="toggleNameInput()">
+    {{ 'signup-form.show-name' | translate }}
+  </label>
+
+  <ng-container *ngIf="shownNameFormField">
+    <app-form-field>
+      <app-form-field-label>{{ 'signup-form.name' | translate }}</app-form-field-label>
+      <input type="text" formControlName="name">
+    </app-form-field>
+  </ng-container>
+
+  <app-form-field>
+    <app-form-field-label>{{ 'signup-form.password' | translate }}</app-form-field-label>
+    <input type="text" [formControl]="form.controls.password">
+  </app-form-field>
+  <button type="submit" [disabled]="!form.valid">{{ 'signup-form.submit' | translate }}</button>
+</form>
+
+

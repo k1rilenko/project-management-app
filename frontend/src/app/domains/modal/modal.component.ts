@@ -1,10 +1,12 @@
 import { Component, HostListener } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
+import { TranslateModule } from '@ngx-translate/core';
+import { ClickOutsideDirective } from '../../directives/click-outside.directive';
 
 @Component({
   selector: 'app-modal',
   standalone: true,
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, TranslateModule, ClickOutsideDirective],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss',
 })

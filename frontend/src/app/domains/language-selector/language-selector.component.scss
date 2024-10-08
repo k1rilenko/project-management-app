@@ -1,0 +1,10 @@
+.language {
+  &__button {
+    cursor: pointer;
+    transition: border-color .3s;
+
+    &.active {
+      border-color: black;
+    }
+  }
+}
