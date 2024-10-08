@@ -1,3 +1,5 @@
+@import '@styles/mixins.scss';
+
 :host {
   display: flex;
   flex-direction: column;
@@ -19,14 +21,41 @@
   &__controls {
     display: flex;
     gap: 8px;
+    @include below($xl) {
+      flex-direction: column;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    height: 100%;
+    max-width: 100vw;
+    overflow-x: auto;
+    padding: 16px 0;
+    transform: rotate(180deg);
+    direction: rtl;
+
+    &::-webkit-scrollbar {
+      height: 16px;
+    }
+
+    &::-webkit-scrollbar-track {
+      border: 1px solid lightgray;
+      background: black; /* Цвет дорожки */
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: lightgray;
+      padding: 2px 0;
+    }
   }
 
   &__columns {
     display: flex;
     height: 100%;
     gap: 16px;
-    max-width: 100vw;
-    overflow-x: auto;
+    transform: rotate(-180deg);
+    direction: ltr;
   }
 
   &__column {

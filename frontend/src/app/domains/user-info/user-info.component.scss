@@ -1,5 +1,13 @@
+.user-wrapper {
+  position: relative;
+}
+
 .user {
   display: flex;
+  align-items: center;
+  cursor: pointer;
+  background: none;
+  border: none;
 
   &__icon {
     width: 50px;
@@ -8,5 +16,17 @@
 
   &__text {
 
+  }
+}
+
+.dropdown {
+  position: absolute;
+  right: 0;
+  margin-top: 8px;
+
+  &__button {
+    &:not(:last-child) {
+      margin-bottom: 8px;
+    }
   }
 }

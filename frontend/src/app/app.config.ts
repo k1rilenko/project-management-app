@@ -18,6 +18,8 @@ import { UsersEffects } from './store/users/users.effects';
 import { ModalEffects } from './domains/modal/modal.effects';
 import { SignUpEffects } from './store/sign-up/sign-up.effects';
 import { LoginEffects } from './store/login/login.effects';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -31,6 +33,7 @@ export const appConfig: ApplicationConfig = {
     provideUsersStore(),
     provideTasksStore(),
     provideNotificationStore(),
+    provideAnimations(),
     provideEffects([ModalEffects, SignUpEffects, LoginEffects]),
     provideStoreDevtools({ maxAge: 25, logOnly: !isDevMode() }),
     provideRouterStore({ serializer: CustomSerializer }),

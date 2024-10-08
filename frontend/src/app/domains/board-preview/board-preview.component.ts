@@ -15,15 +15,16 @@ import { ConfirmationDialogName } from '../confirmation-dialog/models/confirmati
   styleUrl: './board-preview.component.scss',
 })
 export class BoardPreviewComponent {
-  @Input({ required: true }) board: BoardEntity | undefined;
+  @Input({ required: true }) board!: BoardEntity;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private modalService: ModalService,
+  ) {}
 
   deleteBoard(event: Event) {
     event.stopPropagation();
-    this.router.navigate([
-      { outlets: { modal: [ModalPathEnum.CONFIRMATION_DIALOG, ConfirmationDialogName.DELETE_BOARD, this.board?.id] } },
-    ]);
+    this.modalService.open([ModalPathEnum.CONFIRMATION_DIALOG, ConfirmationDialogName.DELETE_BOARD, this.board.id]);
   }
 
   openBoard() {

@@ -1,9 +1,19 @@
 @if (user$ | async; as user) {
-  <div class="user">
-    <app-svg-icon class="user__icon" icon="user"></app-svg-icon>
-    <p class="user__text text">
-      <span class="text__label">user: {{ user.name }}</span>
-      <span class="text__value"></span>
-    </p>
+  <div class="user-wrapper">
+    <button class="user" (click)="setDropDownMenuViewStatus(true)">
+      <app-svg-icon class="user__icon" icon="user"></app-svg-icon>
+      <p class="user__text text">
+        <span class="text__label">user: {{ user.name }}</span>
+        <span class="text__value"></span>
+      </p>
+    </button>
+
+    <app-dropdown-menu class="dropdown" *ngIf="isShownDropdownMenu"
+                       (appClickOutside)="setDropDownMenuViewStatus(false)">
+      <app-button class="dropdown__button" (click)="editProfile()">Edit profile</app-button>
+      <app-button class="dropdown__button" (click)="logOut()">Logout</app-button>
+    </app-dropdown-menu>
+
   </div>
+
 }

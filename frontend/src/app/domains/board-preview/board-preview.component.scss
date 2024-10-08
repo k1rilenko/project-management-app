@@ -1,5 +1,11 @@
+@import '@styles/mixins.scss';
+
 :host {
-  min-width: 300px;
+  min-width: 320px;
+  @include below($sm) {
+    min-width: auto;
+    width: 100%;
+  }
   width: max-content;
   display: flex;
 }
@@ -8,8 +14,12 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  border-radius: 40px;
+  border-radius: var(--border-radius);
   border: 1px solid lightgray;
   padding: 16px;
   cursor: pointer;
+
+  &__text {
+    margin-bottom: 8px;
+  }
 }

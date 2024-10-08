@@ -8,20 +8,23 @@
     </div>
     @if (columns$ | async; as columns) {
       <h1> Columns:</h1>
-      <div
-        class="board__columns"
-        cdkDropList
-        cdkDropListGroup
-        cdkDropListOrientation="horizontal"
-        cdkDropListLockAxis="x"
-        (cdkDropListDropped)="drop($event)">
-        @for (column of columns; track column.id) {
-          <app-column class="board__column" [column]="column" cdkDrag [cdkDragData]="column">
-          </app-column>
-        } @empty {
-          Columns empty!!!
-        }
+      <div class="board__wrapper">
+        <div
+          class="board__columns"
+          cdkDropList
+          cdkDropListGroup
+          cdkDropListOrientation="horizontal"
+          cdkDropListLockAxis="x"
+          (cdkDropListDropped)="drop($event)">
+          @for (column of columns; track column.id) {
+            <app-column class="board__column" [column]="column" cdkDrag [cdkDragData]="column">
+            </app-column>
+          } @empty {
+            Columns empty!!!
+          }
+        </div>
       </div>
+
     }
   </section>
 }
