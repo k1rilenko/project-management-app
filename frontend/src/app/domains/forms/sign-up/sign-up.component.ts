@@ -7,6 +7,9 @@ import { signUpActions } from '../../../store/sign-up/sign-up.actions';
 import { FormFieldComponent } from '../../form/form-field/form-field.component';
 import { FormFieldLabelComponent } from '../../form/form-field-label/form-field-label.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { passwordMatchValidator } from '../../../validators/password-match.validator';
+import { CustomFormFieldErrors } from '../../form/form-control-validation/models/form-field-errors';
+import { CUSTOM_FIELD_ERRORS } from '../../form/form-control-validation/models/custom-form-field-errors';
 
 @Component({
   selector: 'app-sign-up',
@@ -19,9 +22,10 @@ export class SignUpComponent {
   public form: FormGroup<{
     login: FormControl<string>;
     password: FormControl<string>;
+    confirmPassword: FormControl<string>;
     name?: FormControl<string>;
   }>;
-
+  public formFieldErrors: CustomFormFieldErrors = CUSTOM_FIELD_ERRORS['password'];
   public shownNameFormField = false;
 
   constructor(
@@ -35,6 +39,7 @@ export class SignUpComponent {
     return this.formBuilder.group({
       login: ['', [Validators.required, Validators.minLength(6)]],
       password: ['', [Validators.required, Validators.minLength(7)]],
+      confirmPassword: ['', [Validators.required, passwordMatchValidator()]],
     });
   }
 

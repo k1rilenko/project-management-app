@@ -20,6 +20,12 @@
     <app-form-field-label>{{ 'signup-form.password' | translate }}</app-form-field-label>
     <input type="text" [formControl]="form.controls.password">
   </app-form-field>
+
+  <app-form-field [customErrors]="formFieldErrors">
+    <app-form-field-label>{{ 'edit-user-form.confirm-password' | translate }}</app-form-field-label>
+    <input type="password" [formControl]="form.controls.confirmPassword">
+  </app-form-field>
+
   <button type="submit" [disabled]="!form.valid">{{ 'signup-form.submit' | translate }}</button>
 </form>
 
