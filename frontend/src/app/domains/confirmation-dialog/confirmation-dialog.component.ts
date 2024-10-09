@@ -1,6 +1,6 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { AbstractConfirmationDialogConfig } from './configs/abstract-confirmation-dialog-config';
-import { AsyncPipe, UpperCasePipe } from '@angular/common';
+import { AsyncPipe, NgIf, UpperCasePipe } from '@angular/common';
 import { confirmationDialogProvider } from './confirmation-dialog.provider';
 import { ButtonComponent } from '../../shared/button/button.component';
 import { Observable } from 'rxjs';
@@ -9,7 +9,7 @@ import { TranslateModule } from '@ngx-translate/core';
 @Component({
   selector: 'app-confirmation-dialog',
   standalone: true,
-  imports: [UpperCasePipe, ButtonComponent, AsyncPipe, TranslateModule],
+  imports: [UpperCasePipe, ButtonComponent, AsyncPipe, TranslateModule, NgIf],
   templateUrl: './confirmation-dialog.component.html',
   styleUrl: './confirmation-dialog.component.scss',
   providers: [confirmationDialogProvider],

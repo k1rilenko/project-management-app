@@ -82,5 +82,11 @@
   },
   "modal": {
     "close": "Close"
+  },
+  "confirmation-dialog": {
+    "delete-board": "Are you sure you want to delete the board <b><u>{{ value }}</u></b> ?",
+    "delete-column": "Are you sure you want to delete the column <b><u>{{ value }}</u></b> ?",
+    "delete-task": "Are you sure you want to delete the task <b><u>{{ value }}</u></b> ?",
+    "delete-user": "Are you sure you want to delete the user <b><u>{{ value }}</u></b> ?"
   }
 }

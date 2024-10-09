@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NonNullableFormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ApiService } from '../../../services/api/api.service';
 import { Store } from '@ngrx/store';
 import { boardsActions } from '../../../store/boards/boards.actions';
 import { FormFieldComponent } from '../../form/form-field/form-field.component';
@@ -19,7 +18,6 @@ export class CreateBoardComponent {
 
   constructor(
     private formBuilder: NonNullableFormBuilder,
-    private apiService: ApiService,
     private store: Store,
   ) {
     this.form = this.getForm();

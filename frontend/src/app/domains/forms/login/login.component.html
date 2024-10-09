@@ -5,7 +5,7 @@
   </app-form-field>
   <app-form-field>
     <app-form-field-label>{{ 'login-form.password' | translate }}</app-form-field-label>
-    <input type="text" [formControl]="form.controls.password">
+    <input type="password" [formControl]="form.controls.password">
   </app-form-field>
   <button type="submit" [disabled]="!form.valid">{{ 'login-form.submit' | translate }}</button>
 </form>

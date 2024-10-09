@@ -1,7 +1,10 @@
-@if (message$ | async; as message) {
-  {{ message }}
-}
+<div class="dialog">
+  <p class="dialog__message" *ngIf="message$ | async as message" [innerHTML]="message | translate ">
+  </p>
+  <div class="dialog__controls">
+    <app-button class="dialog__control" (click)="onConfirm()">{{ confirmText | translate }}</app-button>
+    <app-button class="dialog__control" (click)="onCancel()">{{ cancelText | translate }}</app-button>
+  </div>
+</div>
 
 
-<app-button (click)="onConfirm()">{{ confirmText | translate }}</app-button>
-<app-button (click)="onCancel()">{{ cancelText | translate }}</app-button>

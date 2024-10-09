@@ -3,7 +3,7 @@ import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { routerSelectors } from '../../../store/router/router.selectors';
 import { tasksActions } from '../../../store/tasks/tasks.actions';
-import { filter, map, switchMap, take } from 'rxjs';
+import { filter, map, switchMap, take, tap } from 'rxjs';
 import { isNotUndefined } from '../../../utils/is-not-undefined';
 import { tasksSelectors } from '../../../store/tasks/tasks.selectors';
 
@@ -18,7 +18,6 @@ export class DeleteTaskConfirmationDialogConfig extends AbstractConfirmationDial
       .select(routerSelectors.params.confirmationDialogParam)
       .pipe(
         filter(isNotUndefined),
-        take(1),
         switchMap(taskId =>
           this.store.select(tasksSelectors.taskById(taskId)).pipe(
             filter(isNotUndefined),
@@ -28,10 +27,12 @@ export class DeleteTaskConfirmationDialogConfig extends AbstractConfirmationDial
             })),
           ),
         ),
+        tap(({ taskId }) => (this.taskID = taskId)),
+        switchMap(({ taskName }) => this.getTranslate('confirmation-dialog.delete-task', taskName)),
+        take(1),
       )
-      .subscribe(({ taskId, taskName }) => {
-        this.taskID = taskId;
-        this.setMessage(this.taskID ? `Delete Task: ${taskName}` : 'Delete Task Confirmation Dialog');
+      .subscribe(text => {
+        this.setMessage(text);
       });
   }
 

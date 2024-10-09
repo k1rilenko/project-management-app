@@ -2,7 +2,7 @@ import { AbstractConfirmationDialogConfig } from './abstract-confirmation-dialog
 import { inject, Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { routerSelectors } from '../../../store/router/router.selectors';
-import { filter, map, switchMap, take } from 'rxjs';
+import { filter, map, switchMap, take, tap } from 'rxjs';
 import { isNotUndefined } from '../../../utils/is-not-undefined';
 import { columnsSelectors } from '../../../store/columns/columns.selectors';
 import { columnsActions } from '../../../store/columns/columns.actions';
@@ -18,7 +18,6 @@ export class DeleteColumnConfirmationDialogConfig extends AbstractConfirmationDi
       .select(routerSelectors.params.confirmationDialogParam)
       .pipe(
         filter(isNotUndefined),
-        take(1),
         switchMap(columnId =>
           this.store.select(columnsSelectors.columnById(columnId)).pipe(
             filter(isNotUndefined),
@@ -28,10 +27,12 @@ export class DeleteColumnConfirmationDialogConfig extends AbstractConfirmationDi
             })),
           ),
         ),
+        tap(({ columnId }) => (this.columnId = columnId)),
+        switchMap(({ columnName }) => this.getTranslate('confirmation-dialog.delete-column', columnName)),
+        take(1),
       )
-      .subscribe(({ columnId, columnName }) => {
-        this.columnId = columnId;
-        this.setMessage(`Delete Column: ${columnName}`);
+      .subscribe(text => {
+        this.setMessage(text);
       });
   }
 
