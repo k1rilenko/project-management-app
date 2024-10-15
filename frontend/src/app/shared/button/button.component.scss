@@ -6,5 +6,12 @@
 
 .button {
   display: inherit;
+  width: 100%;
+  font-size: var(--ss);
   cursor: pointer;
+  min-height: 32px;
+  border-radius: var(--element-radius);
+  align-items: center;
+  justify-content: center;
+  transition: .3s;
 }

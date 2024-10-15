@@ -16,11 +16,20 @@ import { usersActions } from '../../../store/users/users.actions';
 import { ModalPathEnum } from '../../modal/modal-path.enum';
 import { ConfirmationDialogName } from '../../confirmation-dialog/models/confirmation-dialog-name.enum';
 import { TranslateModule } from '@ngx-translate/core';
+import { FormWrapperComponent } from '../../form/form-wrapper/form-wrapper.component';
 
 @Component({
   selector: 'app-user-edit',
   standalone: true,
-  imports: [AsyncPipe, FormFieldComponent, FormFieldLabelComponent, ReactiveFormsModule, ButtonComponent, TranslateModule],
+  imports: [
+    AsyncPipe,
+    FormFieldComponent,
+    FormFieldLabelComponent,
+    ReactiveFormsModule,
+    ButtonComponent,
+    TranslateModule,
+    FormWrapperComponent,
+  ],
   templateUrl: './user-edit.component.html',
   styleUrl: './user-edit.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

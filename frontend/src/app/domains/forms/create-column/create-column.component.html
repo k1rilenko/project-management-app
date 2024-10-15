@@ -1,7 +1,9 @@
-<form [formGroup]="form" (ngSubmit)="submit()">
-  <app-form-field>
-    <app-form-field-label>{{ 'create-column-form.title' | translate }}</app-form-field-label>
-    <input type="text" [formControl]="form.controls.title">
-  </app-form-field>
-  <button type="submit" [disabled]="!form.valid">{{ 'create-column-form.submit' | translate }}</button>
-</form>
+<app-form-wrapper>
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <app-form-field>
+      <app-form-field-label>{{ 'create-column-form.title' | translate }}</app-form-field-label>
+      <input type="text" [formControl]="form.controls.title">
+    </app-form-field>
+    <app-button type="submit" [disabled]="!form.valid">{{ 'create-column-form.submit' | translate }}</app-button>
+  </form>
+</app-form-wrapper>

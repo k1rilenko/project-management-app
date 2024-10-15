@@ -1,7 +1,7 @@
 <div class="language">
   @for (language of languages; track language) {
-    <button [class.active]="(currentLanguage$ | async) === language" class="language__button"
-            (click)="changeLanguage(language)"> {{ language }}
-    </button>
+    <app-button [class.active]="(currentLanguage$ | async) === language" class="language__button"
+                (click)="changeLanguage(language)"> {{ language | uppercase }}
+    </app-button>
   }
 </div>

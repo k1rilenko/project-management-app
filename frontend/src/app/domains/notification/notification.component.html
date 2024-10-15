@@ -1,5 +1,5 @@
 @for (notification of notifications$ | async; track notification.id) {
   <div class="notification" [ngClass]="'notification_' + notification.type">
-    <p class="notification__text">{{ notification.message }}</p>
+    <p class="notification__text">{{ notification.message | translate }}</p>
   </div>
 }

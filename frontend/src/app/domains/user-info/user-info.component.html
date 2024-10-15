@@ -3,12 +3,11 @@
     <button class="user" (click)="setDropDownMenuViewStatus(true)">
       <app-svg-icon class="user__icon" icon="user"></app-svg-icon>
       <p class="user__text text">
-        <span class="text__label">{{ 'user-info.title' | translate }}: {{ user.name }}</span>
-        <span class="text__value"></span>
+        <span class="text__value"> {{ user.name }}</span>
       </p>
     </button>
 
-    <app-dropdown-menu class="dropdown" *ngIf="isShownDropdownMenu"
+    <app-dropdown-menu @fadeInOut class="dropdown" *ngIf="isShownDropdownMenu"
                        (appClickOutside)="setDropDownMenuViewStatus(false)">
       <app-button class="dropdown__button" (click)="editProfile()">{{ 'user-info.edit-profile-button' | translate }}
       </app-button>

@@ -1,14 +1,15 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Language } from '../../services/translation/language.type';
 import { Languages } from '../../services/translation/language.const';
 import { TranslationService } from '../../services/translation/translation.service';
 import { Observable } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
+import { AsyncPipe, UpperCasePipe } from '@angular/common';
+import { ButtonComponent } from '../../shared/button/button.component';
 
 @Component({
   selector: 'app-language-selector',
   standalone: true,
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, ButtonComponent, UpperCasePipe],
   templateUrl: './language-selector.component.html',
   styleUrl: './language-selector.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

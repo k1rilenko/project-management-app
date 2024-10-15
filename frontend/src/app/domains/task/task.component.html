@@ -11,8 +11,11 @@
         <p class="task__value">{{ task.description }}</p>
       </div>
 
-      <app-button class="task__edit" (click)="editTask(task.id)">{{ 'task.edit' | translate }}</app-button>
-      <app-button class="task__delete" (click)="deleteTask(task.id)">{{ 'task.delete' | translate }}</app-button>
+      <div class="task__controls">
+        <app-button class="task__edit" (click)="editTask(task.id)">{{ 'task.edit' | translate }}</app-button>
+        <app-button class="task__delete" (click)="deleteTask(task.id)">{{ 'task.delete' | translate }}</app-button>
+      </div>
+
     </div>
     <div class="task__aside">
       <div class="task__row task__assignee">

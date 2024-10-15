@@ -5,14 +5,17 @@ import { FormFiledErrorKey } from '../form-control-validation/models/form-filed-
 import { CustomFormFieldErrors, FORM_FIELD_ERRORS, FormFieldErrors } from '../form-control-validation/models/form-field-errors';
 import { FormSubmitDirective } from '../form-control-validation/directives/form-submit.directive';
 import { AsyncPipe } from '@angular/common';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
+import { fadeInOut } from '../../../animations/fade-in-out.animation';
 
 @Component({
   selector: 'app-form-field',
   standalone: true,
-  imports: [AsyncPipe],
+  imports: [AsyncPipe, TranslateModule],
   templateUrl: './form-field.component.html',
   styleUrl: './form-field.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeInOut(300)],
 })
 export class FormFieldComponent {
   @Input() customErrors: CustomFormFieldErrors = {};
@@ -31,6 +34,7 @@ export class FormFieldComponent {
   }
 
   constructor(
+    private translateService: TranslateService,
     @Inject(FORM_FIELD_ERRORS) private formFieldErrors: FormFieldErrors,
     @Optional() @Host() private form: FormSubmitDirective,
   ) {
@@ -63,7 +67,7 @@ export class FormFieldComponent {
               const errorText = formFieldErrors[firstKey];
               let errorData = controlErrors[firstKey];
               errorData = Array.isArray(errorData) ? errorData.join(' ') : errorData;
-              return errorText ? errorText : errorData || `Unknown error: ${firstKey}`;
+              return errorText ? this.translateService.instant(errorText, errorData) : errorData || `Unknown error: ${firstKey}`;
             }
           }),
           distinctUntilChanged(),

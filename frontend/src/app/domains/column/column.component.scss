@@ -1,6 +1,6 @@
 :host {
   border: 1px solid lightgray;
-  border-radius: var(--border-radius);
+  border-radius: var(--block-radius);
   padding: 16px;
 }
 
@@ -9,8 +9,34 @@
   flex-direction: column;
   height: 100%;
 
+  &__scroll-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow: hidden;
+    padding-bottom: 16px;
+    margin-right: -8px;
+  }
+
   &__wrapper {
     height: 100%;
+    overflow: auto;
+    padding-right: 8px;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-track {
+      border: 1px solid lightgray;
+      background: black;
+      border-radius: var(--element-radius);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: lightgray;
+      padding: 2px 0;
+    }
   }
 
   &__delete-button {
@@ -22,19 +48,21 @@
   display: flex;
   width: 100%;
   margin-bottom: 10px;
+  flex-direction: column;
 
-  &.show-controls {
-    .title__controls {
-      max-width: 60px;
-    }
+  &__input {
+    height: 32px;
+    padding: 0 12px;
+    border-radius: var(--element-radius);
+    margin-bottom: 6px;
   }
 
   &__controls {
-    max-width: 0;
-    transition: .3s;
+    display: flex;
   }
 
   &__control {
+    width: 100%;
   }
 
   &__input {

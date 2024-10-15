@@ -119,3 +119,9 @@ $max-font-size: 24px;
     }
   }
 }
+
+@mixin title {
+  font-size: var(--hs);
+  font-weight: 700;
+  margin-bottom: 16px;
+}

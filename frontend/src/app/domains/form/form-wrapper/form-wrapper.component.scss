@@ -1,0 +1,21 @@
+:host {
+  display: block;
+  padding: 32px;
+
+  &::ng-deep {
+    form {
+      display: flex;
+      flex-direction: column;
+
+      app-form-field {
+        margin-bottom: 16px;
+      }
+    }
+
+    app-button {
+      margin-top: 18px;
+      display: block;
+      width: 100%;
+    }
+  }
+}

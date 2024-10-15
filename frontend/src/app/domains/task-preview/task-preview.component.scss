@@ -1,12 +1,27 @@
 :host {
   display: flex;
   width: 100%;
+  cursor: pointer;
 }
 
 .task {
   width: 100%;
   border: 1px solid lightgray;
-  border-radius: var(--border-radius);
+  border-radius: var(--block-radius);
   padding: 16px;
   margin-bottom: 8px;
+
+  &__row {
+    &:not(:last-child) {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__title {
+    font-weight: 700;
+  }
+
+  &__user-assign {
+    font-size: var(--ss);
+  }
 }

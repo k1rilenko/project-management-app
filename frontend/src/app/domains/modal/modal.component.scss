@@ -18,27 +18,18 @@
   &__close {
     display: flex;
     max-width: min-content;
-    margin: 8px;
-    margin-left: auto;
+    margin: 16px 16px 8px auto;
     cursor: pointer;
   }
 
   &__container {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    width: 50vw;
-    height: 50vh;
-    min-width: 320px;
     border: 1px solid white;
-    border-radius: var(--border-radius);
+    border-radius: var(--block-radius);
     background: darkslateblue;
-    //  TODO REMOVE HERE
-    &::ng-deep {
-      form {
-        display: flex;
-        flex-direction: column;
-        padding: 16px;
-      }
-    }
+    min-width: 500px;
+    max-width: 50vw;
   }
 }

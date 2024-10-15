@@ -1,52 +1,54 @@
 @if (vm$ | async; as vm) {
   @if (form$| async; as form) {
-    <form class="task" [formGroup]="form" (ngSubmit)="submit(vm.id)">
-      <div class="task__body">
-        <app-form-field>
-          <app-form-field-label>{{ 'task-form.title' | translate }}</app-form-field-label>
-          <input type="text" [formControl]="form.controls.title">
-        </app-form-field>
+    <app-form-wrapper>
+      <form class="task" [formGroup]="form" (ngSubmit)="submit(vm.id)">
+        <div class="task__body">
+          <app-form-field>
+            <app-form-field-label>{{ 'task-form.title' | translate }}</app-form-field-label>
+            <input type="text" [formControl]="form.controls.title">
+          </app-form-field>
 
-        <app-form-field>
-          <app-form-field-label>{{ 'task-form.description' | translate }}</app-form-field-label>
-          <textarea [formControl]="form.controls.description"> </textarea>
-        </app-form-field>
+          <app-form-field>
+            <app-form-field-label>{{ 'task-form.description' | translate }}</app-form-field-label>
+            <textarea [formControl]="form.controls.description"> </textarea>
+          </app-form-field>
 
-        <app-button class="task__button"> {{ 'task-form.edit' | translate }}</app-button>
-      </div>
-      <div class="task__aside">
+          <app-button class="task__button"> {{ 'task-form.edit' | translate }}</app-button>
+        </div>
+        <div class="task__aside">
 
-        <app-form-field>
-          <app-form-field-label> {{ 'task-form.user' | translate }}:</app-form-field-label>
-          <select [formControl]="form.controls.user">
-            @for (option of vm.userOptions; track option.value) {
-              <option [value]="option.value">{{ option.name }}
-              </option>
-            }
-          </select>
-        </app-form-field>
+          <app-form-field>
+            <app-form-field-label> {{ 'task-form.user' | translate }}:</app-form-field-label>
+            <select [formControl]="form.controls.user">
+              @for (option of vm.userOptions; track option.value) {
+                <option [value]="option.value">{{ option.name }}
+                </option>
+              }
+            </select>
+          </app-form-field>
 
-        <app-form-field>
-          <app-form-field-label> {{ 'task-form.column' | translate }}:</app-form-field-label>
-          <select [formControl]="form.controls.column">
-            @for (option of vm.columnOptions; track option.value) {
-              <option [value]="option.value">{{ option.name }}
-              </option>
-            }
-          </select>
-        </app-form-field>
+          <app-form-field>
+            <app-form-field-label> {{ 'task-form.column' | translate }}:</app-form-field-label>
+            <select [formControl]="form.controls.column">
+              @for (option of vm.columnOptions; track option.value) {
+                <option [value]="option.value">{{ option.name }}
+                </option>
+              }
+            </select>
+          </app-form-field>
 
-        <app-form-field>
-          <app-form-field-label> {{ 'task-form.board' | translate }}:</app-form-field-label>
-          <select [formControl]="form.controls.board">
-            @for (option of vm.boardOptions; track option.value) {
-              <option [value]="option.value">{{ option.name }}
-              </option>
-            }
-          </select>
-        </app-form-field>
-      </div>
-    </form>
+          <app-form-field>
+            <app-form-field-label> {{ 'task-form.board' | translate }}:</app-form-field-label>
+            <select [formControl]="form.controls.board">
+              @for (option of vm.boardOptions; track option.value) {
+                <option [value]="option.value">{{ option.name }}
+                </option>
+              }
+            </select>
+          </app-form-field>
+        </div>
+      </form>
+    </app-form-wrapper>
   }
 
 }

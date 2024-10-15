@@ -17,11 +17,20 @@ import { ButtonComponent } from '../../../shared/button/button.component';
 import { tasksActions } from '../../../store/tasks/tasks.actions';
 import { UpdateTaskRequestBody } from '../../../services/api/requests/task/update-task.request';
 import { TranslateModule } from '@ngx-translate/core';
+import { FormWrapperComponent } from '../../form/form-wrapper/form-wrapper.component';
 
 @Component({
   selector: 'app-task-edit',
   standalone: true,
-  imports: [AsyncPipe, ReactiveFormsModule, FormFieldComponent, FormFieldLabelComponent, ButtonComponent, TranslateModule],
+  imports: [
+    AsyncPipe,
+    ReactiveFormsModule,
+    FormFieldComponent,
+    FormFieldLabelComponent,
+    ButtonComponent,
+    TranslateModule,
+    FormWrapperComponent,
+  ],
   templateUrl: './task-edit.component.html',
   styleUrl: './task-edit.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

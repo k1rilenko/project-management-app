@@ -1,6 +1,4 @@
 import { ApiRequest } from '../../models/api-request';
-import { SignInDto } from '../../dto/sign-in.dto';
-import { BoardDto } from '../../dto/board.dto';
 import { ColumnDto } from '../../dto/column.dto';
 
 export interface UpdateColumnRequestBody {

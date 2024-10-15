@@ -1,29 +1,31 @@
 <div class="edit-user">
   @if (form$ | async; as form) {
-    <form class="edit-user__form form" [formGroup]="form" (ngSubmit)="submit(form)">
-      <div class="form__body">
-        <app-form-field>
-          <app-form-field-label>{{ 'edit-user-form.login' | translate }}</app-form-field-label>
-          <input type="text" [formControl]="form.controls.login">
-        </app-form-field>
-        <app-form-field>
-          <app-form-field-label>{{ 'edit-user-form.name' | translate }}</app-form-field-label>
-          <input type="text" [formControl]="form.controls.name">
-        </app-form-field>
+    <app-form-wrapper>
+      <form class="edit-user__form form" [formGroup]="form" (ngSubmit)="submit(form)">
+        <div class="form__body">
+          <app-form-field>
+            <app-form-field-label>{{ 'edit-user-form.login' | translate }}</app-form-field-label>
+            <input type="text" [formControl]="form.controls.login">
+          </app-form-field>
+          <app-form-field>
+            <app-form-field-label>{{ 'edit-user-form.name' | translate }}</app-form-field-label>
+            <input type="text" [formControl]="form.controls.name">
+          </app-form-field>
 
-        <app-form-field>
-          <app-form-field-label>{{ 'edit-user-form.password' | translate }}</app-form-field-label>
-          <input type="password" [formControl]="form.controls.password">
-        </app-form-field>
+          <app-form-field>
+            <app-form-field-label>{{ 'edit-user-form.password' | translate }}</app-form-field-label>
+            <input type="password" [formControl]="form.controls.password">
+          </app-form-field>
 
-        <app-form-field [customErrors]="formFieldErrors">
-          <app-form-field-label>{{ 'edit-user-form.confirm-password' | translate }}</app-form-field-label>
-          <input type="password" [formControl]="form.controls.confirmPassword">
-        </app-form-field>
-      </div>
-      <app-button>{{ 'edit-user-form.edit' | translate }}</app-button>
-    </form>
+          <app-form-field [customErrors]="formFieldErrors">
+            <app-form-field-label>{{ 'edit-user-form.confirm-password' | translate }}</app-form-field-label>
+            <input type="password" autocomplete="new-password" [formControl]="form.controls.confirmPassword">
+          </app-form-field>
+        </div>
+        <app-button [disabled]="!form.valid">{{ 'edit-user-form.edit' | translate }}</app-button>
+      </form>
+    </app-form-wrapper>
   }
-  <app-button (click)="deleteUser()"> {{ 'edit-user-form.delete' | translate }}</app-button>
+  <app-button class="delete-user" (click)="deleteUser()"> {{ 'edit-user-form.delete' | translate }}</app-button>
 </div>
 

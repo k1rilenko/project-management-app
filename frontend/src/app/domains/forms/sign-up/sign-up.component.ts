@@ -10,13 +10,27 @@ import { TranslateModule } from '@ngx-translate/core';
 import { passwordMatchValidator } from '../../../validators/password-match.validator';
 import { CustomFormFieldErrors } from '../../form/form-control-validation/models/form-field-errors';
 import { CUSTOM_FIELD_ERRORS } from '../../form/form-control-validation/models/custom-form-field-errors';
+import { FormWrapperComponent } from '../../form/form-wrapper/form-wrapper.component';
+import { slideIn } from '../../../animations/slide-in.animation';
+import { marginBottom } from '../../../animations/margin-bottom';
+import { ButtonComponent } from '../../../shared/button/button.component';
 
 @Component({
   selector: 'app-sign-up',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, NgIf, FormFieldComponent, FormFieldLabelComponent, TranslateModule],
+  imports: [
+    FormsModule,
+    ReactiveFormsModule,
+    NgIf,
+    FormFieldComponent,
+    FormFieldLabelComponent,
+    TranslateModule,
+    FormWrapperComponent,
+    ButtonComponent,
+  ],
   templateUrl: './sign-up.component.html',
   styleUrl: './sign-up.component.scss',
+  animations: [slideIn(), marginBottom(16)],
 })
 export class SignUpComponent {
   public form: FormGroup<{
@@ -26,7 +40,7 @@ export class SignUpComponent {
     name?: FormControl<string>;
   }>;
   public formFieldErrors: CustomFormFieldErrors = CUSTOM_FIELD_ERRORS['password'];
-  public shownNameFormField = false;
+  public isShownNameField = false;
 
   constructor(
     private formBuilder: NonNullableFormBuilder,
@@ -44,12 +58,12 @@ export class SignUpComponent {
   }
 
   toggleNameInput() {
-    if (!this.shownNameFormField) {
+    if (!this.isShownNameField) {
       this.form.addControl('name', this.formBuilder.control('', Validators.minLength(6)));
-      this.shownNameFormField = true;
+      this.isShownNameField = true;
     } else {
       this.form.removeControl('name');
-      this.shownNameFormField = false;
+      this.isShownNameField = false;
     }
   }
 

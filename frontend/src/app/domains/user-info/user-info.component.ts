@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { UserEntity } from '../../store/users/models/user.entity';
@@ -12,6 +12,7 @@ import { ModalPathEnum } from '../modal/modal-path.enum';
 import { TokenService } from '../../services/token/token.service';
 import { ModalService } from '../modal/modal.service';
 import { TranslateModule } from '@ngx-translate/core';
+import { fadeInOut } from '../../animations/fade-in-out.animation';
 
 @Component({
   selector: 'app-user-info',
@@ -19,6 +20,8 @@ import { TranslateModule } from '@ngx-translate/core';
   imports: [AsyncPipe, SvgIconComponent, DropdownMenuComponent, ClickOutsideDirective, NgIf, ButtonComponent, TranslateModule],
   templateUrl: './user-info.component.html',
   styleUrl: './user-info.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  animations: [fadeInOut(300)],
 })
 export class UserInfoComponent {
   public user$: Observable<UserEntity | null>;

@@ -11,6 +11,8 @@ import { CreateTaskActionParam, tasksActions } from '../../../store/tasks/tasks.
 import { FormFieldLabelComponent } from '../../form/form-field-label/form-field-label.component';
 import { FormFieldComponent } from '../../form/form-field/form-field.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { FormWrapperComponent } from '../../form/form-wrapper/form-wrapper.component';
+import { ButtonComponent } from '../../../shared/button/button.component';
 
 export interface UserSelectOptionsInterface {
   text: UserEntity['name'];
@@ -25,7 +27,15 @@ export interface ColumnSelectOptionsInterface {
 @Component({
   selector: 'app-create-task',
   standalone: true,
-  imports: [ReactiveFormsModule, AsyncPipe, FormFieldLabelComponent, FormFieldComponent, TranslateModule],
+  imports: [
+    ReactiveFormsModule,
+    AsyncPipe,
+    FormFieldLabelComponent,
+    FormFieldComponent,
+    TranslateModule,
+    FormWrapperComponent,
+    ButtonComponent,
+  ],
   templateUrl: './create-task.component.html',
   styleUrl: './create-task.component.scss',
 })

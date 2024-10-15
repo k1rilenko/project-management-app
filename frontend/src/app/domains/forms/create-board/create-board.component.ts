@@ -5,11 +5,13 @@ import { boardsActions } from '../../../store/boards/boards.actions';
 import { FormFieldComponent } from '../../form/form-field/form-field.component';
 import { FormFieldLabelComponent } from '../../form/form-field-label/form-field-label.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { FormWrapperComponent } from '../../form/form-wrapper/form-wrapper.component';
+import { ButtonComponent } from '../../../shared/button/button.component';
 
 @Component({
   selector: 'app-create-board',
   standalone: true,
-  imports: [ReactiveFormsModule, FormFieldComponent, FormFieldLabelComponent, TranslateModule],
+  imports: [ReactiveFormsModule, FormFieldComponent, FormFieldLabelComponent, TranslateModule, FormWrapperComponent, ButtonComponent],
   templateUrl: './create-board.component.html',
   styleUrl: './create-board.component.scss',
 })

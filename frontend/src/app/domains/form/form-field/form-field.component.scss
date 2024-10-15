@@ -1,0 +1,53 @@
+:host {
+  display: flex;
+  flex-direction: column;
+
+  &::ng-deep {
+    app-form-field-label {
+      display: flex;
+      margin-bottom: 4px;
+    }
+  }
+}
+
+.form-field {
+  display: flex;
+  position: relative;
+
+  &::ng-deep {
+    input, textarea, select {
+      box-sizing: border-box;
+      width: 100%;
+      border-radius: var(--element-radius);
+    }
+
+    input, select {
+      height: 32px;
+      padding: 0 12px;
+    }
+
+    textarea {
+      resize: none;
+      padding: 8px 12px;
+    }
+  }
+
+}
+
+.error-message {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  margin: 4px 0 0 0;
+  padding: 4px 4px;
+  background-color: darkred;
+  border-radius: var(--element-radius);
+  z-index: 1;
+
+  &__text {
+    font-size: var(--ns);
+    line-height: 1;
+    color: white;
+  }
+}

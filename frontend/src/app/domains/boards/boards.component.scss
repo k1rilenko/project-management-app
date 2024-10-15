@@ -1,7 +1,14 @@
+@import '@styles/_mixins.scss';
+
 .boards {
-  &__item {
-    &:not(:last-child) {
-      margin-bottom: 16px;
-    }
+  &__text {
+    @include title
+  }
+
+  &__wrapper {
+    padding: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
   }
 }

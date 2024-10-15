@@ -1,32 +1,32 @@
-<form [formGroup]="form" (ngSubmit)="onSubmit()">
-
-  <app-form-field>
-    <app-form-field-label>{{ 'signup-form.login' | translate }}</app-form-field-label>
-    <input type="text" [formControl]="form.controls.login">
-  </app-form-field>
-  <label>
-    <input type="checkbox" [checked]="shownNameFormField" (change)="toggleNameInput()">
-    {{ 'signup-form.show-name' | translate }}
-  </label>
-
-  <ng-container *ngIf="shownNameFormField">
+<app-form-wrapper>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
     <app-form-field>
+      <app-form-field-label>{{ 'signup-form.login' | translate }}</app-form-field-label>
+      <input type="text" [formControl]="form.controls.login">
+    </app-form-field>
+    <label>
+      <input type="checkbox" [checked]="isShownNameField" (change)="toggleNameInput()">
+      {{ 'signup-form.show-name' | translate }}
+    </label>
+
+    <app-form-field *ngIf="isShownNameField" @slideIn @marginBottom>
       <app-form-field-label>{{ 'signup-form.name' | translate }}</app-form-field-label>
       <input type="text" formControlName="name">
     </app-form-field>
-  </ng-container>
 
-  <app-form-field>
-    <app-form-field-label>{{ 'signup-form.password' | translate }}</app-form-field-label>
-    <input type="text" [formControl]="form.controls.password">
-  </app-form-field>
+    <app-form-field>
+      <app-form-field-label>{{ 'signup-form.password' | translate }}</app-form-field-label>
+      <input type="text" [formControl]="form.controls.password">
+    </app-form-field>
 
-  <app-form-field [customErrors]="formFieldErrors">
-    <app-form-field-label>{{ 'edit-user-form.confirm-password' | translate }}</app-form-field-label>
-    <input type="password" [formControl]="form.controls.confirmPassword">
-  </app-form-field>
+    <app-form-field [customErrors]="formFieldErrors">
+      <app-form-field-label>{{ 'edit-user-form.confirm-password' | translate }}</app-form-field-label>
+      <input type="password" [formControl]="form.controls.confirmPassword">
+    </app-form-field>
 
-  <button type="submit" [disabled]="!form.valid">{{ 'signup-form.submit' | translate }}</button>
-</form>
+    <app-button type="submit" [disabled]="!form.valid">{{ 'signup-form.submit' | translate }}</app-button>
+  </form>
+</app-form-wrapper>
+
 
 

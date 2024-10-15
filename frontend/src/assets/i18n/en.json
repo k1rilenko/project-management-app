@@ -3,7 +3,8 @@
     "create-board-button": "Create new board"
   },
   "boards-page": {
-    "title": "Select board"
+    "title": "Select board",
+    "empty": "No boards. Create your first board"
   },
   "board-preview": {
     "title": "title",
@@ -23,8 +24,9 @@
   },
   "column": {
     "cancel-rename": "Cancel",
-    "submit-rename": "Submit",
-    "delete-column": "Delete column"
+    "submit-rename": "Rename",
+    "delete-column": "Delete column",
+    "update-success": "Column updated successfully"
   },
   "task": {
     "title": "Title",
@@ -88,5 +90,18 @@
     "delete-column": "Are you sure you want to delete the column <b><u>{{ value }}</u></b> ?",
     "delete-task": "Are you sure you want to delete the task <b><u>{{ value }}</u></b> ?",
     "delete-user": "Are you sure you want to delete the user <b><u>{{ value }}</u></b> ?"
+  },
+  "error": {
+    "form-field": {
+      "required": "This field is required.",
+      "min-length": "Expected {{requiredLength}} but entered {{actualLength}} characters",
+      "max-length": "More than {{requiredLength}} characters expected, but {{actualLength}} entered",
+      "min-date": "The date must be after {minDate}.",
+      "pattern": "The value does not match the required pattern.",
+      "password-miss-match": "The password does not match"
+    }
+  },
+  "loader": {
+    "text": "Loading"
   }
 }

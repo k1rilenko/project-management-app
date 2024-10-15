@@ -1,17 +1,17 @@
 <div class="boards">
   @if (loading$ | async) {
-    <p> Loading....</p>
-  }
-
-  @if (boards$ | async; as boards) {
-    <div class="boards__wrapper">
+    <app-loader></app-loader>
+  } @else {
+    @if (boards$ | async; as boards) {
       <p class="boards__text">{{ 'boards-page.title' | translate }}</p>
-      @for (board of boards; track board.id) {
-        <app-board-preview class="boards__item" [board]="board"></app-board-preview>
-      } @empty {
-        <p>There are no items.</p>
-      }
-    </div>
+      <div class="boards__wrapper">
+        @for (board of boards; track board.id) {
+          <app-board-preview class="boards__item" [board]="board"></app-board-preview>
+        } @empty {
+          <p class="boards__empty">{{ 'boards-page.empty' | translate }}</p>
+        }
+      </div>
+    }
   }
 </div>
 

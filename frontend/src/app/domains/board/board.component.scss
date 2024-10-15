@@ -1,9 +1,9 @@
-@import '@styles/mixins.scss';
+@import '@styles/_mixins.scss';
 
 :host {
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: calc(100vh - 52px);
 }
 
 .board {
@@ -15,12 +15,13 @@
   overflow: hidden;
 
   &__title {
-
+    @include title
   }
 
   &__controls {
     display: flex;
     gap: 8px;
+    margin-bottom: 16px;
     @include below($xl) {
       flex-direction: column;
     }
@@ -59,7 +60,7 @@
   }
 
   &__column {
-    min-width: 300px;
+    width: 320px;
   }
 }
 

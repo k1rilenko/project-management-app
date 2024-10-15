@@ -1,6 +1,5 @@
 import { inject, Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { usersActions } from '../../store/users/users.actions';
 import { tap } from 'rxjs';
 import { ModalService } from './modal.service';
 import { signUpActions } from '../../store/sign-up/sign-up.actions';
@@ -25,6 +24,7 @@ export class ModalEffects {
           boardsActions.createBoardSuccess,
           boardsActions.deleteBoardSuccess,
           columnsActions.createColumnSuccess,
+          columnsActions.deleteColumnSuccess,
           tasksActions.createTaskSuccess,
           tasksActions.deleteTaskSuccess,
           tasksActions.updateTaskSuccess,

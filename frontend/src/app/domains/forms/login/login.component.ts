@@ -6,11 +6,21 @@ import { loginActions } from '../../../store/login/login.actions';
 import { FormFieldComponent } from '../../form/form-field/form-field.component';
 import { FormFieldLabelComponent } from '../../form/form-field-label/form-field-label.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { FormWrapperComponent } from '../../form/form-wrapper/form-wrapper.component';
+import { ButtonComponent } from '../../../shared/button/button.component';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule, JsonPipe, FormFieldComponent, FormFieldLabelComponent, TranslateModule],
+  imports: [
+    ReactiveFormsModule,
+    JsonPipe,
+    FormFieldComponent,
+    FormFieldLabelComponent,
+    TranslateModule,
+    FormWrapperComponent,
+    ButtonComponent,
+  ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })

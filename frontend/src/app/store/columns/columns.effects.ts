@@ -9,7 +9,6 @@ import { Store } from '@ngrx/store';
 import { routerSelectors } from '../router/router.selectors';
 import { isNotUndefined } from '../../utils/is-not-undefined';
 import { getAllColumnsRequest } from '../../services/api/requests/column/get-all-columns.request';
-import { ModalService } from '../../domains/modal/modal.service';
 import { columnsSelectors } from './columns.selectors';
 import {
   updateColumnRequest,
@@ -17,6 +16,7 @@ import {
   UpdateColumnRequestParams,
 } from '../../services/api/requests/column/update-column.request';
 import { deleteColumnRequest } from '../../services/api/requests/column/delete-column.request';
+import { NotificationService } from '../../services/notitication/notification.service';
 
 @Injectable()
 export class ColumnsEffects {
@@ -24,7 +24,7 @@ export class ColumnsEffects {
   private apiService = inject(ApiService);
   private columnEntityMapper = inject(ColumnEntityMapper);
   private store = inject(Store);
-  private modalService = inject(ModalService);
+  private notificationService = inject(NotificationService);
 
   getColumns$ = createEffect(() =>
     this.actions$.pipe(
@@ -125,15 +125,29 @@ export class ColumnsEffects {
 
   startLoading$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(columnsActions.createColumn),
+      ofType(columnsActions.getColumns, columnsActions.createColumn),
       map(() => columnsActions.startLoading()),
     ),
   );
 
   stopLoading$ = createEffect(() =>
     this.actions$.pipe(
-      ofType(columnsActions.createColumnSuccess, columnsActions.createColumnFailed),
+      ofType(
+        columnsActions.getColumnsSuccess,
+        columnsActions.getColumnsFailed,
+        columnsActions.createColumnSuccess,
+        columnsActions.createColumnFailed,
+      ),
       map(() => columnsActions.stopLoading()),
     ),
+  );
+
+  notifyAboutSuccessUpdate$ = createEffect(
+    () =>
+      this.actions$.pipe(
+        ofType(columnsActions.updateColumnSuccess),
+        tap(() => this.notificationService.success('column.update-success')),
+      ),
+    { dispatch: false },
   );
 }

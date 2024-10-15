@@ -1,10 +1,16 @@
 .language {
+  display: flex;
+
   &__button {
+    width: 40px;
     cursor: pointer;
-    transition: border-color .3s;
 
     &.active {
-      border-color: black;
+      &::ng-deep {
+        button {
+          filter: contrast(.5);
+        }
+      }
     }
   }
 }

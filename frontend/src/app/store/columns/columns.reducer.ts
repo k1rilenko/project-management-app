@@ -28,4 +28,9 @@ export const columnsReducer = createReducer(
     );
   }),
   on(actions.deleteColumnSuccess, (_state, { columnId }) => adapter.removeOne(columnId, _state)),
+
+  on(actions.resetColumns, () => DEFAULT_COLUMNS_STATE),
+  
+  on(actions.startLoading, state => ({ ...state, loading: true })),
+  on(actions.stopLoading, state => ({ ...state, loading: false })),
 );

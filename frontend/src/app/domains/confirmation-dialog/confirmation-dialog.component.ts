@@ -20,7 +20,6 @@ export class ConfirmationDialogComponent {
   public cancelText: string;
 
   constructor(private abstractConfirmationDialogConfig: AbstractConfirmationDialogConfig) {
-    console.log(this.abstractConfirmationDialogConfig);
     this.message$ = this.abstractConfirmationDialogConfig.message$;
     this.confirmText = this.abstractConfirmationDialogConfig.confirmText;
     this.cancelText = this.abstractConfirmationDialogConfig.cancelText;

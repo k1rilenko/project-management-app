@@ -1,25 +1,31 @@
 <div class="column">
-  <div class="column__title title" [class.show-controls]="isFocus">
-    <div class="title__controls">
-      <app-button class="title__control title__control_cancel">{{ 'column.cancel-rename' | translate }}</app-button>
+  <div class="column__title title">
+    <app-form-field>
+      <input class="title__input" type="text" [formControl]="columnTitle" (focus)="changeFocusStatus(true)">
+    </app-form-field>
+    <div class="title__controls" *ngIf="isFocus" @slideIn>
+      <app-button class="title__control title__control_cancel"
+                  (click)="abortRename()">{{ 'column.cancel-rename' | translate }}
+      </app-button>
       <app-button class="title__control title__control_submit"
                   (click)="renameColumnTitle()">{{ 'column.submit-rename' | translate }}
       </app-button>
     </div>
-    <input class="title__input" type="text" [formControl]="columnTitle" (focus)="changeFocusStatus(true)"
-           (blur)="changeFocusStatus(false)">
   </div>
-  @if (tasks$ | async; as tasks) {
-    <div class="column__wrapper"
-         cdkDropList
-         [id]="column.id"
-         [cdkDropListData]="tasks"
-         (cdkDropListDropped)="drop($event)">
-      @for (task of tasks; track task.id) {
-        <app-task-preview [taskId]="task.id" cdkDrag [cdkDragData]="task"></app-task-preview>
-      }
-    </div>
-  }
+  <div class="column__scroll-wrapper">
+    @if (tasks$ | async; as tasks) {
+      <div class="column__wrapper"
+           cdkDropList
+           [id]="column.id"
+           [cdkDropListData]="tasks"
+           (cdkDropListDropped)="drop($event)">
+        @for (task of tasks; track task.id) {
+          <app-task-preview [taskId]="task.id" cdkDrag [cdkDragData]="task"></app-task-preview>
+        }
+      </div>
+    }
+  </div>
+
   <app-button class="column__delete-button" (click)="deleteColumn()">{{ 'column.delete-column' | translate }}
   </app-button>
 </div>

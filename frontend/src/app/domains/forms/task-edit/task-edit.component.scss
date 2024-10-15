@@ -12,9 +12,23 @@
   &__body {
     display: flex;
     flex-direction: column;
+    padding-right: 16px;
+    border-right: 1px solid lightgray;
+  }
+
+  &__aside {
+    display: flex;
+    flex-direction: column;
+    padding-left: 16px;
   }
 
   &__button {
     margin-top: auto;
+  }
+
+  &::ng-deep {
+    textarea {
+      height: 102px;
+    }
   }
 }

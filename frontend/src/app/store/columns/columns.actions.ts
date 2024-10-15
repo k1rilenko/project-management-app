@@ -43,4 +43,6 @@ export const columnsActions = {
 
   startLoading: createAction('[Columns] Starting Loading'),
   stopLoading: createAction('[Columns] Stop Loading'),
+
+  resetColumns: createAction('[Columns] Reset Columns'),
 };

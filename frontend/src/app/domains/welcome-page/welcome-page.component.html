@@ -1,5 +1,6 @@
 <div class="welcome-page">
   <div class="welcome-page__auth auth">
+    <app-language-selector></app-language-selector>
     <app-button class="auth__button" (click)="openModal(ModalPathEnum.LOGIN)">{{ 'auth.login' | translate }}
     </app-button>
     <app-button class="auth__button" (click)="openModal(ModalPathEnum.SIGNUP)">{{ 'auth.signup' | translate }}

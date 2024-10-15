@@ -7,11 +7,13 @@ import { boardsSelector } from '../../store/boards/boards.selectors';
 import { CommonModule } from '@angular/common';
 import { BoardPreviewComponent } from '../board-preview/board-preview.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { columnsActions } from '../../store/columns/columns.actions';
+import { LoaderComponent } from '../../shared/loader/loader.component';
 
 @Component({
   selector: 'app-boards',
   standalone: true,
-  imports: [CommonModule, BoardPreviewComponent, TranslateModule],
+  imports: [CommonModule, BoardPreviewComponent, TranslateModule, LoaderComponent],
   templateUrl: './boards.component.html',
   styleUrl: './boards.component.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -27,5 +29,6 @@ export class BoardsComponent implements OnInit {
 
   ngOnInit(): void {
     this.store.dispatch(boardsActions.getBoards());
+    this.store.dispatch(columnsActions.resetColumns());
   }
 }
