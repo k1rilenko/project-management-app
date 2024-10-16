@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { map, Observable, tap } from 'rxjs';
 import { ApiRequest } from './models/api-request';
-import { enviroment } from '../../../enviroment';
+import { environment } from '../../../environment';
 import { Router } from '@angular/router';
 import { TokenService } from '../token/token.service';
 import { TokenStrategy } from './models/token-strategy';
@@ -23,8 +23,8 @@ export class ApiService {
     apiRequest: ApiRequest<RequestBody, ResponseBody>,
     options?: ApiSendOptionsParams,
   ): Observable<ResponseBody> {
-    const { apiHost } = enviroment;
-    const url = apiHost + apiRequest.url;
+    const { apiUrl } = environment;
+    const url = apiUrl + apiRequest.url;
     const { queryParams, body, method, tokenStrategy } = apiRequest;
     const apiSendOptions: ApiSendOptions = {
       ...DEFAULT_API_SEND_OPTIONS,
