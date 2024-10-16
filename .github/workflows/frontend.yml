@@ -15,11 +15,8 @@ jobs:
         run: npm ci
         working-directory: frontend
       - name: Build the project
-        run: |
-          cd frontend
-          npm run build
+        run: npm run build
+        working-directory: frontend
       - name: Run tests
-        run: |
-          cd frontend
-          npm run test
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+        run: npm run test:ci
+        working-directory: frontend
