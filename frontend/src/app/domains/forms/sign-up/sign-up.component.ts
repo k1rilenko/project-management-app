@@ -72,6 +72,12 @@ export class SignUpComponent {
     if (!formValue.name) {
       formValue.name = formValue.login;
     }
-    this.store.dispatch(signUpActions.signUp({ requestBody: formValue as SignUpRequestBody }));
+    const {name, login, password} = formValue;
+    const signUpData: SignUpRequestBody = {
+      name,
+      login,
+      password,
+    }
+    this.store.dispatch(signUpActions.signUp({ requestBody: signUpData }));
   }
 }
